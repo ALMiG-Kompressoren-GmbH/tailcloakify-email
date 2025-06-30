@@ -1,9 +1,10 @@
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { render, Text } from "jsx-email";
-import { EmailLayout } from "../layout.tsx";
+import { EmailLayout } from "../layout";
 import { createVariablesHelper } from "keycloakify-emails/variables";
-
-type TemplateProps = Omit<GetTemplateProps, "plainText">
+import  i18n, { TFunction } from "i18next";
+import { previewLocale } from "../util/previewLocale.ts";
+type TemplateProps = Omit<GetTemplateProps, "plainText"> & { t: TFunction };
 
 const paragraph = {
     color: '#777',
@@ -13,7 +14,8 @@ const paragraph = {
 }
 
 export const previewProps: TemplateProps = {
-    locale: "en",
+    t: i18n.getFixedT(previewLocale),
+    locale: previewLocale,
     themeName: "Tailcloakify",
 }
 
@@ -21,17 +23,19 @@ export const templateName = "Email Test";
 
 const { exp } = createVariablesHelper("email-test.ftl");
 
-export const Template = ({locale}: TemplateProps) => (
-    <EmailLayout preview = {"This is a test email"} locale={locale}>
-        <Text style = { paragraph }>This is a test message from {exp("realmName")}</Text>
+export const Template = ({locale, t}: TemplateProps) => (
+    <EmailLayout preview = {t('email-test.messagePreview')} locale={locale}>
+        <Text style = { paragraph }> {t('email-test.messageBody', { realmName: exp("realmName") })}</Text>
     </EmailLayout>
 )
 
 export const getTemplate: GetTemplate = async (props) => {
-    return await render(<Template {...props} />, { plainText: props.plainText });
+    const t = i18n.getFixedT(props.locale);
+    return await render(<Template {...props} t={t} />, { plainText: props.plainText });
 }
 
 export const getSubject: GetSubject = async (_props) => {
-    return "[KEYCLOAK] - SMTP Test Email";
+    const t = i18n.getFixedT(_props.locale);
+    return t('email-test.messageSubject');
 };
 

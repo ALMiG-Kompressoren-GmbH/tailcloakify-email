@@ -1,7 +1,7 @@
 import { Body, Container, Head, Html, Preview, Tailwind } from "jsx-email";
 import { PropsWithChildren, ReactNode } from "react";
 import { createVariablesHelper } from "keycloakify-emails/variables";
-
+import i18n from "i18next";
 const { exp } = createVariablesHelper("email-test.ftl");
 const currentYear = new Date().getFullYear();
 
@@ -10,6 +10,7 @@ export const EmailLayout = ({
                                 children,
                                 preview
                             }: PropsWithChildren<{ preview: ReactNode; locale: string }>) => {
+    const t = i18n.getFixedT(locale);
     return (
         <Html lang={locale}>
             <Head>
@@ -111,7 +112,7 @@ export const EmailLayout = ({
                             <tbody>
                             <tr>
                                 <td style={{color: "black"}}>
-                                    © {currentYear} {exp("realmName")}.
+                                    {t('footer.year', { currentYear, realmName: exp("realmName")} )}
                                 </td>
                             </tr>
                             </tbody>
