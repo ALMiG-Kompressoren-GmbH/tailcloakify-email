@@ -2,7 +2,7 @@ import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { render, Text } from "jsx-email";
 import { EmailLayout } from "../layout";
 import { createVariablesHelper } from "keycloakify-emails/variables";
-import  i18n, { TFunction } from "i18next";
+import i18n, { TFunction } from "i18next";
 import { previewLocale } from "../util/previewLocale.ts";
 type TemplateProps = Omit<GetTemplateProps, "plainText"> & { t: TFunction };
 
@@ -24,7 +24,7 @@ export const templateName = "Email Test";
 const { exp } = createVariablesHelper("email-test.ftl");
 
 export const Template = ({locale, t}: TemplateProps) => (
-    <EmailLayout preview = {t('email-test.messagePreview')} locale={locale}>
+    <EmailLayout preview = {"This is a test email"} locale={locale}>
         <Text style = { paragraph }> {t('email-test.messageBody', { realmName: exp("realmName") })}</Text>
     </EmailLayout>
 )

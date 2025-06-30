@@ -18,7 +18,7 @@ i18n.use(ICU)
         resources,
         fallbackLng: "en",
         debug: true,
-        interpolation: { escapeValue: false }
+        interpolation: { escapeValue: false },
     });
 
 export default i18n;
