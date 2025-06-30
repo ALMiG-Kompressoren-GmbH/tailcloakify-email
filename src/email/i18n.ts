@@ -24,23 +24,8 @@ i18n.use(ICU)
 export default i18n;
 
 export const getMessages: GetMessages = props => {
-    // this default properties are optional, if you omit them, they will be taken from a base theme
-    switch (props.locale) {
-        case "de":
-            return {
-                "requiredAction.WELCOME": "Wilkommen"
-            };
-        case "fr":
-            return {
-                "requiredAction.WELCOME": "Bienvenu"
-            };
-        case "ru":
-            return {
-                "requiredAction.WELCOME": "Добро пожаловать"
-            };
-        default:
-            return {
-                "requiredAction.WELCOME": "Welcome"
-            };
+    const t = i18n.getFixedT(props.locale);
+    return {
+        "requiredAction.WELCOME": t('executeActions.invitation')
     }
 };

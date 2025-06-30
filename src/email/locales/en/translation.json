@@ -3,7 +3,7 @@
     "subject": "Your Account",
     "messageBody": "We have just created your {realmName} account.",
     "messageLink": "Please set your initial password by clicking on the link below. {link}",
-    "linkExpiry": "This link will expire within {linkExpiration}.",
+    "linkExpiry": "This link will expire within {linkExpiration, plural, one {# minute} other {# minute}}.",
     "resetPassword": "If the link has already expired, try to reset you password with your email at our login page.",
     "furtherActions": "If you have any questions or think you are the wrong person receiving this email, please reach out to {contactEmail} for help.",
     "invitation": "Welcome"
