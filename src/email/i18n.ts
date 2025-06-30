@@ -26,6 +26,6 @@ export default i18n;
 export const getMessages: GetMessages = props => {
     const t = i18n.getFixedT(props.locale);
     return {
-        "requiredAction.WELCOME": t('executeActions.invitation')
+        "requiredAction.WELCOME": t('execute-actions.invitation')
     }
 };
