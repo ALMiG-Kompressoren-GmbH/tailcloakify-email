@@ -28,6 +28,11 @@
     "linkExpiry": "This link will expire within {linkExpiration, plural, one {# minute} other {# minutes}}.",
     "ignoreMessage": "If you don't want to create this account, just ignore this message."
   },
+  "event-login-error": {
+    "messageSubject": "Login Error",
+    "messagePreview": "Failed login attempt detected",
+    "messageBody": "A failed login attempt was detected to your account on {date} from {ipAddress)}. If this was not you, please contact an administrator."
+  },
   "footer": {
     "year": "© {currentYear} {realmName}"
   }
