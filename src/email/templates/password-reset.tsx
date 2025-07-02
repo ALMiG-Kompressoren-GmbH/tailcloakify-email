@@ -2,11 +2,15 @@ import { render, Text } from "jsx-email";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { EmailLayout } from "../layout.tsx";
 import { createVariablesHelper } from "keycloakify-emails/variables";
+import i18n from "../i18n.ts";
+import { previewLocale } from "../util/previewLocale.ts";
+import { TFunction } from "i18next";
 
-type TemplateProps = Omit<GetTemplateProps, "plainText">;
+type TemplateProps = Omit<GetTemplateProps, "plainText"> & { t: TFunction };
 
 export const previewProps: TemplateProps = {
-    locale: "en",
+    t: i18n.getFixedT(previewLocale),
+    locale: previewLocale,
     themeName: "Tailcloakify"
 };
 
@@ -43,9 +47,11 @@ export const Template = ({ locale }: TemplateProps) => (
 );
 
 export const getTemplate: GetTemplate = async props => {
-    return await render(<Template {...props} />, { plainText: props.plainText });
+    const t = i18n.getFixedT(props.locale);
+    return await render(<Template {...props} t={t} />, { plainText: props.plainText });
 };
 
 export const getSubject: GetSubject = async _props => {
-    return "Reset Password";
+    const t = i18n.getFixedT(_props.locale);
+    return t("identity-provider-link.messageSubject");
 };
