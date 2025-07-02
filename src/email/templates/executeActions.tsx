@@ -1,13 +1,16 @@
-import { render, Text } from "jsx-email";
+import { Raw, render, Text } from "jsx-email";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { EmailLayout } from "../layout.tsx";
 import { createVariablesHelper } from "keycloakify-emails/variables";
-import { getMessages } from "../i18n.ts";
+import i18n, { getMessages } from "../i18n.ts";
+import { previewLocale } from "../util/previewLocale.ts";
+import { TFunction } from "i18next";
 
-type TemplateProps = Omit<GetTemplateProps, "plainText">;
+type TemplateProps = Omit<GetTemplateProps, "plainText"> & { t: TFunction };
 
 export const previewProps: TemplateProps = {
-    locale: "en",
+    t: i18n.getFixedT(previewLocale),
+    locale: previewLocale,
     themeName: "Tailcloakify"
 };
 
@@ -24,71 +27,61 @@ const paragraph = {
 
 const requiredActionsText = getMessages(previewProps);
 
-const hasWelcomeMessage = Object.values(requiredActionsText).some(value =>
-    value.includes("Welcome")
-);
-
-export const Template = ({ locale }: TemplateProps) => (
-    <EmailLayout
-        preview={`We have just created your ${exp("realmName")} account. Please set your initial password by clicking on the link below`}
-        locale={locale}
-    >
-        <Text style={paragraph}>
-            {hasWelcomeMessage ? (
-                <>
-                    <p>
-                        We have just created your {exp("realmName")} account. Please set
-                        your initial password by clicking on the link below.
-                    </p>
-                    <p>
-                        <a href={exp("link")}>Set Your Password</a>
-                    </p>
-                    <p>
-                        This link will expire within{" "}
-                        {exp("linkExpirationFormatter(linkExpiration)")}.
-                    </p>
-                    <p>
-                        If the link has already expired, try to reset you password with
-                        your email at our login page.
-                        <br />
-                        If you have any questions or think you are the wrong person
-                        receiving this email, please reach out to{" "}
-                        <a href="mailto:compass@almig.de">compass@almig.de</a> for help.
-                    </p>
-                </>
-            ) : (
-                <>
-                    <p>
-                        Your administrator has just requested that you update your{" "}
-                        {exp("realmName")} account by performing the following action(s):{" "}
-                        <ul>
-                            {Object.values(requiredActionsText).map((item, index) => (
-                                <li key={index}>{item}</li>
-                            ))}
-                        </ul>
-                        . Click on the link below to start this process.
-                    </p>
-                    <p>
-                        <a href={exp("link")}>Link to account update</a>
-                    </p>
-                    <p>
-                        This link will expire within{" "}
-                        {exp("linkExpirationFormatter(linkExpiration)")}.
-                    </p>
-                    <p>
-                        If you are unaware that your administrator has requested this,
-                        just ignore this message and nothing will be changed.
-                    </p>
-                </>
-            )}
-        </Text>
-    </EmailLayout>
-);
+export const Template = ({ locale, t }: TemplateProps) => {
+    const hasWelcomeMessage = Object.values(requiredActionsText).some(value =>
+        value.includes(t("execute-actions.invitation"))
+    );
+    return (
+        <EmailLayout preview={t("execute-actions.messagePreview")} locale={locale}>
+            <Text style={paragraph}>
+                {hasWelcomeMessage ? (
+                    <>
+                        <p>
+                            {t("execute-actions.messageBody", {
+                                realmName: exp("realmName")
+                            })}
+                        </p>
+                        <p>
+                            <a href={exp("link")}>{t("execute-actions.messageLink")}</a>
+                        </p>
+                        <p>{t("execute-actions.linkExpiry", { linkExpiration: 5 })}</p>
+                        <p>
+                            {t("execute-actions.resetPassword")}
+                            <br />
+                            {t("execute-actions.furtherActions", {
+                                contactEmail: "compass@almig.de"
+                            })}
+                        </p>
+                    </>
+                ) : (
+                    <>
+                        <p>
+                            {t("execute-actions.adminMessageBody", {
+                                realmName: exp("realmName")
+                            })}
+                            <Raw content="<#assign requiredActionsText><#if requiredActions??><#list requiredActions><#items as reqActionItem>${msg('requiredAction.${reqActionItem}')}<#sep>, </#sep></#items></#list></#if></#assign>" />
+                            {t("execute-actions.adminMessageLink")}
+                        </p>
+                        <p>
+                            <a href={exp("link")}>
+                                {t("execute-actions.adminLinkToAccountUpdate")}
+                            </a>
+                        </p>
+                        <p>{t("execute-actions.linkExpiry", { linkExpiration: 5 })}</p>
+                        <p>{t("execute-actions.adminIgnoreMessage")}</p>
+                    </>
+                )}
+            </Text>
+        </EmailLayout>
+    );
+};
 
 export const getTemplate: GetTemplate = async props => {
-    return await render(<Template {...props} />, { plainText: props.plainText });
+    const t = i18n.getFixedT(props.locale);
+    return await render(<Template {...props} t={t} />, { plainText: props.plainText });
 };
 
 export const getSubject: GetSubject = async _props => {
-    return "Your Account";
+    const t = i18n.getFixedT(_props.locale);
+    return t("execute-actions.messageSubject");
 };
