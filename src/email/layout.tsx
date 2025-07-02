@@ -1,16 +1,18 @@
 import { Body, Container, Head, Html, Preview, Tailwind } from "jsx-email";
 import { PropsWithChildren, ReactNode } from "react";
 import { createVariablesHelper } from "keycloakify-emails/variables";
-import i18n from "i18next";
+import i18n from "./i18n";
+
 const { exp } = createVariablesHelper("email-test.ftl");
 const currentYear = new Date().getFullYear();
 
 export const EmailLayout = ({
-                                locale,
-                                children,
-                                preview
-                            }: PropsWithChildren<{ preview: ReactNode; locale: string }>) => {
+    locale,
+    children,
+    preview
+}: PropsWithChildren<{ preview: ReactNode; locale: string }>) => {
     const t = i18n.getFixedT(locale);
+
     return (
         <Html lang={locale}>
             <Head>
@@ -27,7 +29,7 @@ export const EmailLayout = ({
                     backgroundRepeat: "no-repeat",
                     backgroundSize: "cover",
                     fontFamily:
-                        '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif',
+                        '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif'
                 }}
             >
                 <Tailwind>
@@ -48,48 +50,48 @@ export const EmailLayout = ({
                             }}
                         >
                             <tbody>
-                            <tr>
-                                <td align="center">
-                                    {/* Card */}
-                                    <table
-                                        cellPadding={0}
-                                        cellSpacing={0}
-                                        border={0}
-                                        width="100%"
-                                        style={{
-                                            backgroundColor: "#ffffff",
-                                            padding: "2.5rem 1rem",
-                                            borderRadius: "0.5rem",
-                                            boxShadow:
-                                                "0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06)"
-                                        }}
-                                    >
-                                        <tbody>
-                                        <tr>
-                                            <td align="center">
-                                                {/* Logo */}
-                                                <img
-                                                    src="https://www.almig.de/typo3conf/ext/almig_package/Resources/Public/Images/almig-logo.png"
-                                                    alt="ALMiG Compressor Systems Logo"
-                                                    style={{ height: "40px" }}
-                                                />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td
-                                                align="left"
-                                                style={{
-                                                    marginTop: "2.5rem",
-                                                    paddingTop: "1.5rem"
-                                                }}
-                                            >
-                                                {children}
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td align="center">
+                                        {/* Card */}
+                                        <table
+                                            cellPadding={0}
+                                            cellSpacing={0}
+                                            border={0}
+                                            width="100%"
+                                            style={{
+                                                backgroundColor: "#ffffff",
+                                                padding: "2.5rem 1rem",
+                                                borderRadius: "0.5rem",
+                                                boxShadow:
+                                                    "0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06)"
+                                            }}
+                                        >
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center">
+                                                        {/* Logo */}
+                                                        <img
+                                                            src="https://www.almig.de/typo3conf/ext/almig_package/Resources/Public/Images/almig-logo.png"
+                                                            alt="ALMiG Compressor Systems Logo"
+                                                            style={{ height: "40px" }}
+                                                        />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td
+                                                        align="left"
+                                                        style={{
+                                                            marginTop: "2.5rem",
+                                                            paddingTop: "1.5rem"
+                                                        }}
+                                                    >
+                                                        {children}
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
 
@@ -110,11 +112,14 @@ export const EmailLayout = ({
                             }}
                         >
                             <tbody>
-                            <tr>
-                                <td style={{color: "black"}}>
-                                    {t('footer.year', { currentYear, realmName: exp("realmName")} )}
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td style={{ color: "black" }}>
+                                        {t("footer.year", {
+                                            currentYear,
+                                            realmName: exp("realmName")
+                                        })}
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </Container>
