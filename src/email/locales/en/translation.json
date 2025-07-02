@@ -13,6 +13,21 @@
     "messagePreview": "This is a test email",
     "messageBody": "This is a test email from {realmName}"
   },
+  "email-update-confirmation": {
+    "messageSubject": "Email Verification Confirmation",
+    "messagePreview": "Email update verification",
+    "messageBody": "To update your {realmName} account with email address {newEmail}, click the link below",
+    "linkExpiry": "This link will expire within {linkExpiration, plural, one {# minute} other {# minutes}}.",
+    "ignoreMessage": "If you don't want to proceed with this modification, just ignore this message."
+  },
+  "email-verification": {
+    "messageSubject": "Email Verification",
+    "messagePreview": "Email verification",
+    "messageBody": "Someone has created a {realmName} account with this email address. If this was you, click the link below to verify your email address.",
+    "messageLink": "Link to email address verification.",
+    "linkExpiry": "This link will expire within {linkExpiration, plural, one {# minute} other {# minutes}}.",
+    "ignoreMessage": "If you don't want to create this account, just ignore this message."
+  },
   "footer": {
     "year": "© {currentYear} {realmName}"
   }
