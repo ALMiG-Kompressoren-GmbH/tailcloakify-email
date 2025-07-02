@@ -2,11 +2,15 @@ import { render, Text } from "jsx-email";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { EmailLayout } from "../layout.tsx";
 import { createVariablesHelper } from "keycloakify-emails/variables";
+import i18n from "../i18n.ts";
+import { previewLocale } from "../util/previewLocale.ts";
+import { TFunction } from "i18next";
 
-type TemplateProps = Omit<GetTemplateProps, "plainText">;
+type TemplateProps = Omit<GetTemplateProps, "plainText"> & { t: TFunction };
 
 export const previewProps: TemplateProps = {
-    locale: "en",
+    t: i18n.getFixedT(previewLocale),
+    locale: previewLocale,
     themeName: "Tailcloakify"
 };
 
@@ -21,25 +25,25 @@ const paragraph = {
     textAlign: "left" as const
 };
 
-export const Template = ({ locale }: TemplateProps) => (
-    <EmailLayout
-        preview={
-            `Your password was changed on ${exp("event.date")} from ${exp("event.ipAddress")}.`
-        }
-        locale={locale}
-    >
+export const Template = ({ locale, t }: TemplateProps) => (
+    <EmailLayout preview={t("event-update-password.messagePreview")} locale={locale}>
         <Text style={paragraph}>
             <p>
-                `Your password was changed on ${exp("event.date")} from ${exp("event.ipAddress")}.`
+                {t("event-update-password.messageBody", {
+                    date: exp("event.date"),
+                    ipAddress: exp("event.ipAddress")
+                })}
             </p>
         </Text>
     </EmailLayout>
 );
 
 export const getTemplate: GetTemplate = async props => {
-    return await render(<Template {...props} />, { plainText: props.plainText });
+    const t = i18n.getFixedT(props.locale);
+    return await render(<Template {...props} t={t} />, { plainText: props.plainText });
 };
 
 export const getSubject: GetSubject = async _props => {
-    return "Update Password";
+    const t = i18n.getFixedT(_props.locale);
+    return t("event-update-password.messageSubject");
 };
