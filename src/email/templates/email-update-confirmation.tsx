@@ -2,11 +2,14 @@ import { render, Text } from "jsx-email";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { EmailLayout } from "../layout.tsx";
 import { createVariablesHelper } from "keycloakify-emails/variables";
+import i18n, { TFunction } from "i18next";
+import { previewLocale } from "../util/previewLocale.ts";
 
-type TemplateProps = Omit<GetTemplateProps, "plainText">;
+type TemplateProps = Omit<GetTemplateProps, "plainText"> & { t: TFunction };
 
 export const previewProps: TemplateProps = {
-    locale: "en",
+    t: i18n.getFixedT(previewLocale),
+    locale: previewLocale,
     themeName: "Tailcloakify"
 };
 
@@ -21,37 +24,37 @@ const paragraph = {
     textAlign: "left" as const
 };
 
-export const Template = ({ locale }: TemplateProps) => (
+export const Template = ({ locale, t }: TemplateProps) => (
     <EmailLayout
-        preview={
-            `To update your ${exp("realmName")} account with email address ${exp("newEmail")}`
-        }
+        preview={t("email-update-confirmation.messageBody", {
+            realmName: exp("realmName"),
+            newEmail: exp("newEmail")
+        })}
         locale={locale}
     >
         <Text style={paragraph}>
             <p>
-                To update your {exp("realmName")} account with email address{" "}
-                {exp("newEmail")}, click the link below
+                {t("email-update-confirmation.messageBody", {
+                    realmName: exp("realmName"),
+                    newEmail: exp("newEmail")
+                })}
             </p>
             <p>
                 <a href={exp("link")}>{exp("link")}</a>
             </p>
-            <p>
-                This link will expire within{" "}
-                {exp("linkExpirationFormatter(linkExpiration)")}.
-            </p>
-            <p>
-                If you don''t want to proceed with this modification, just ignore this
-                message.
-            </p>
+            <p>{t("email-update-confirmation.linkExpiry", {linkExpiration: 3})}</p>
+            <p>{t("email-update-confirmation.ignoreMessage")}</p>
         </Text>
+        <Text style={paragraph}></Text>
     </EmailLayout>
 );
 
 export const getTemplate: GetTemplate = async props => {
-    return await render(<Template {...props} />, { plainText: props.plainText });
+    const t = i18n.getFixedT(props.locale);
+    return await render(<Template {...props} t={t} />, { plainText: props.plainText });
 };
 
 export const getSubject: GetSubject = async _props => {
-    return "Email Verification";
+    const t = i18n.getFixedT(_props.locale);
+    return t("email-update-confirmation.messageSubject");
 };

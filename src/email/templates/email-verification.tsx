@@ -2,11 +2,14 @@ import { render, Text } from "jsx-email";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { EmailLayout } from "../layout.tsx";
 import { createVariablesHelper } from "keycloakify-emails/variables";
+import i18n, { TFunction } from "i18next";
+import { previewLocale } from "../util/previewLocale.ts";
 
-type TemplateProps = Omit<GetTemplateProps, "plainText">;
+type TemplateProps = Omit<GetTemplateProps, "plainText"> & { t: TFunction };
 
 export const previewProps: TemplateProps = {
-    locale: "en",
+    t: i18n.getFixedT(previewLocale),
+    locale: previewLocale,
     themeName: "Tailcloakify"
 };
 
@@ -21,34 +24,25 @@ const paragraph = {
     textAlign: "left" as const
 };
 
-export const Template = ({ locale }: TemplateProps) => (
-    <EmailLayout
-        preview={
-           `Someone has created a ${exp("realmName")} account with this email address`
-        }
-        locale={locale}
-    >
+export const Template = ({ locale, t }: TemplateProps) => (
+    <EmailLayout preview={t("email-verification.messagePreview")} locale={locale}>
         <Text style={paragraph}>
+            <p>{t("email-verification.messageBody", { realmName: exp("realmName") })}</p>
             <p>
-                Someone has created a {exp("realmName")} account with this email address.
-                If this was you, click the link below to verify your email address
+                <a href={exp("link")}>{t("email-verification.messageLink")}</a>
             </p>
-            <p>
-                <a href={exp("link")}>Link to e-mail address verification</a>
-            </p>
-            <p>
-                This link will expire within{" "}
-                {exp("linkExpirationFormatter(linkExpiration)")}.
-            </p>
-            <p>If you didn''t create this account, just ignore this message.</p>
+            <p>{t("email-verification.linkExpiry", { linkExpiration: 3 })}</p>
+            <p>{t("email-verification.ignoreMessage")}</p>
         </Text>
     </EmailLayout>
 );
 
 export const getTemplate: GetTemplate = async props => {
-    return await render(<Template {...props} />, { plainText: props.plainText });
+    const t = i18n.getFixedT(props.locale);
+    return await render(<Template {...props} t={t} />, { plainText: props.plainText });
 };
 
 export const getSubject: GetSubject = async _props => {
-    return "Email Verification";
+    const t = i18n.getFixedT(_props.locale);
+    return t("email-verification.messageSubject");
 };
