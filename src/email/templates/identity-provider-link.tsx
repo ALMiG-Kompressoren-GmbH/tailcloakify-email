@@ -2,11 +2,15 @@ import { render, Text } from "jsx-email";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { EmailLayout } from "../layout.tsx";
 import { createVariablesHelper } from "keycloakify-emails/variables";
+import { previewLocale } from "../util/previewLocale.ts";
+import { TFunction } from "i18next";
+import i18n from "../i18n.ts";
 
-type TemplateProps = Omit<GetTemplateProps, "plainText">;
+type TemplateProps = Omit<GetTemplateProps, "plainText"> & { t: TFunction };
 
 export const previewProps: TemplateProps = {
-    locale: "en",
+    t: i18n.getFixedT(previewLocale),
+    locale: previewLocale,
     themeName: "Tailcloakify"
 };
 
@@ -21,26 +25,26 @@ const paragraph = {
     textAlign: "left" as const
 };
 
-export const Template = ({ locale }: TemplateProps) => (
-    <EmailLayout
-        preview={
-            `Someone wants to link your ${exp("realmName")} account with ${exp("identityProviderDisplayName")}...`
-        }
-        locale={locale}
-    >
+export const Template = ({ locale, t }: TemplateProps) => (
+    <EmailLayout preview={t("identity-provider-link.messagePreview")} locale={locale}>
         <Text style={paragraph}>
             <p>
                 <p>
-                    Someone wants to link your {exp("realmName")} account with {exp("identityProviderDisplayName")} account
-                    of user {exp("identityProviderContext.username")}. If this was you, click the link below to link accounts
+                    {t("identity-provider-link.messageBody", {
+                        realmName: exp("realmName"),
+                        identityProviderDisplayName: exp("identityProviderDisplayName"),
+                        username: exp("identityProviderContext.username")
+                    })}
                 </p>
                 <p>
-                    <a href={exp("link")}>Link to confirm account linking</a>
+                    <a href={exp("link")}>{t("identity-provider-link.messageLink")}</a>
                 </p>
-                <p>This link will expire within {5}.</p>
+                <p>{t("identity-provider-link.linkExpiry", { linkExpiration: 5 })}</p>
                 <p>
-                    If you don't want to link account, just ignore this message. If you
-                    link accounts, you will be able to login to {exp("realmName")} through {exp("identityProviderDisplayName")}.
+                    {t("identity-provider-link.ignoreMessage", {
+                        realmName: exp("realmName"),
+                        identityProviderDisplayName: exp("identityProviderDisplayName")
+                    })}
                 </p>
             </p>
         </Text>
@@ -48,9 +52,11 @@ export const Template = ({ locale }: TemplateProps) => (
 );
 
 export const getTemplate: GetTemplate = async props => {
-    return await render(<Template {...props} />, { plainText: props.plainText });
+    const t = i18n.getFixedT(props.locale);
+    return await render(<Template {...props} t={t} />, { plainText: props.plainText });
 };
 
 export const getSubject: GetSubject = async _props => {
-    return "Identity Provider Link";
+    const t = i18n.getFixedT(_props.locale);
+    return t("event-login-error.messageSubject");
 };
