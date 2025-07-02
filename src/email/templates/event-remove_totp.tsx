@@ -2,11 +2,15 @@ import { render, Text } from "jsx-email";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { EmailLayout } from "../layout.tsx";
 import { createVariablesHelper } from "keycloakify-emails/variables";
+import { previewLocale } from "../util/previewLocale.ts";
+import { TFunction } from "i18next";
+import i18n from "../i18n";
 
-type TemplateProps = Omit<GetTemplateProps, "plainText">;
+type TemplateProps = Omit<GetTemplateProps, "plainText"> & { t: TFunction };
 
 export const previewProps: TemplateProps = {
-    locale: "en",
+    t: i18n.getFixedT(previewLocale),
+    locale: previewLocale,
     themeName: "Tailcloakify"
 };
 
@@ -21,27 +25,27 @@ const paragraph = {
     textAlign: "left" as const
 };
 
-export const Template = ({ locale }: TemplateProps) => (
+export const Template = ({ locale, t }: TemplateProps) => (
     <EmailLayout
         preview={
-            `OTP was removed from your account on ${exp("event.date")} from ${exp("event.ipAddress")}.`
+            t('event-remove_totp.messagePreview')
         }
         locale={locale}
     >
         <Text style={paragraph}>
             <p>
-                OTP was removed from your account on {exp("event.date")} from{" "}
-                {exp("event.ipAddress")}. If this was not you, please contact an
-                administrator.
+                {t('event-remove_totp.messageBody', { date: exp('event.date'), ipAddress: exp('event.ipAddress')} )}
             </p>
         </Text>
     </EmailLayout>
 );
 
 export const getTemplate: GetTemplate = async props => {
-    return await render(<Template {...props} />, { plainText: props.plainText });
+    const t = i18n.getFixedT(props.locale);
+    return await render(<Template {...props} t={t} />, { plainText: props.plainText });
 };
 
 export const getSubject: GetSubject = async _props => {
-    return "Remove OTP";
+    const t = i18n.getFixedT(_props.locale);
+    return t('event-remove_totp.messageSubject');
 };
