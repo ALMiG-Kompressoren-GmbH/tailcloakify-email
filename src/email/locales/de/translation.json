@@ -1,0 +1,12 @@
+{
+  "execute-actions": {
+    "messageSubject": "Account",
+    "messagePreview": "Neues Konto erstellt",
+    "messageBody": "Wir haben soeben Ihren {realmName} Account erstellt. Über den nachfolgenden Link können Sie Ihr initiales Passwort vergeben.",
+    "messageLink": "Passwort setzen",
+    "linkExpiry": "Dieser Link läuft ab in {linkExpiration, plural, one {# minute} other {# minuten}}.",
+    "resetPassword": "Wenn der Link bereits abgelaufen ist, können Sie Ihr Passwort über unsere Login-Seite mit Ihrer aktuellen E-Mail zurücksetzen.",
+    "furtherActions": "Sollten Sie Fragen haben oder vermuten, dass Sie der falsche Adressat für diese E-Mail waren, schreiben Sie bitte eine E-Mail a {contactEmail}",
+    "invitation": "Wilkommen"
+  }
+}

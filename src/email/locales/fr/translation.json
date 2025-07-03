@@ -1,0 +1,12 @@
+{
+  "execute-actions": {
+    "messageSubject": "Votre compte",
+    "messagePreview": "Nouveau compte créé",
+    "messageBody": "Nous venons de créer votre compte {realmName}. Veuillez définir votre mot de passe initial en cliquant sur le lien ci-dessous.",
+    "messageLink": "Définir votre mot de passe",
+    "linkExpiry": "Ce lien expirera dans {linkExpiration, plural, one {# minute} other {# minutes}}.",
+    "resetPassword": "Si le lien a déjà expiré, essayez de réinitialiser votre mot de passe avec votre e-mail sur notre page de connexion.",
+    "furtherActions": "Si vous avez des questions ou pensez que vous avez reçu ce courriel par erreur, veuillez contacter {contactEmail} pour obtenir de l'aide.",
+    "invitation": "Bienvenue"
+  }
+}

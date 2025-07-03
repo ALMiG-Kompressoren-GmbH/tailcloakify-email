@@ -1,0 +1,12 @@
+{
+  "execute-actions": {
+    "messageSubject": "Tu cuenta",
+    "messagePreview": "Nueva cuenta creada",
+    "messageBody": "Acabamos de crear tu cuenta de {realmName}. Por favor, establece tu contraseña inicial haciendo clic en el enlace de abajo.",
+    "messageLink": "Establecer tu contraseña",
+    "linkExpiry": "Este enlace expirará en {linkExpiration, plural, one {# minuto} other {# minutos}}.",
+    "resetPassword": "Si el enlace ya ha expirado, intenta restablecer tu contraseña con tu correo electrónico en nuestra página de inicio de sesión.",
+    "furtherActions": "Si tienes alguna pregunta o crees que has recibido este correo por error, por favor comunícate con {contactEmail} para obtener ayuda.",
+    "invitation": "Bienvenido"
+  }
+}

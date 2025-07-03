@@ -12,7 +12,6 @@
     "adminMessageLink": "Click on the link below to start this process.",
     "adminLinkToAccountUpdate": "Link to account update",
     "adminIgnoreMessage": " If you are unaware that your administrator has requested this, just ignore this message and nothing will be changed."
-
   },
   "email-test": {
     "messageSubject": "[KEYCLOAK] - SMTP Test Email",
