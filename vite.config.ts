@@ -15,7 +15,7 @@ export default defineConfig({
             accountThemeImplementation: "none",
             themeName: "Tailcloakify",
             environmentVariables: [
-                { name: "styles", default: " " },
+                { name: "styles", default: "" },
                 { name: "scripts", default: "" },
                 { name: "meta", default: "" },
                 { name: "TAILCLOAKIFY_ADDITIONAL_SCRIPTS", default: "" },
@@ -24,6 +24,7 @@ export default defineConfig({
                 { name: "TAILCLOAKIFY_HIDE_LOGIN_FORM", default: "" },
                 { name: "TAILCLOAKIFY_BACKGROUND_LOGO_URL", default: "" },
                 { name: "TAILCLOAKIFY_BACKGROUND_VIDEO_URL", default: "" },
+                { name: "TAILCLOAKIFY_HEADER_LOGO_URL", default: "" },
                 { name: "TAILCLOAKIFY_FAVICON_URL", default: "" },
                 { name: "TAILCLOAKIFY_FOOTER_IMPRINT_URL", default: "" },
                 { name: "TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL", default: "" },
