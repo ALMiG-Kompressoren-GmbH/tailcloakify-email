@@ -1,0 +1,12 @@
+{
+  "execute-actions": {
+    "messageSubject": "Váš účet",
+    "messagePreview": "Nový účet byl vytvořen",
+    "messageBody": "Právě jsme vytvořili váš účet {realmName}. Nastavte si prosím své počáteční heslo kliknutím na níže uvedený odkaz.",
+    "messageLink": "Nastavit heslo",
+    "linkExpiry": "Tento odkaz vyprší za {linkExpiration, plural, one {# minutu} few {# minuty} other {# minut}}.",
+    "resetPassword": "Pokud již odkaz vypršel, zkuste si obnovit heslo pomocí svého e-mailu na naší přihlašovací stránce.",
+    "furtherActions": "Pokud máte jakékoliv dotazy nebo si myslíte, že tento e-mail jste obdrželi omylem, kontaktujte prosím {contactEmail} pro pomoc.",
+    "invitation": "Vítejte"
+  }
+}
