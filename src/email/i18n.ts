@@ -3,6 +3,11 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import enTranslation from "./locales/en/translation.json";
 import esTranslation from "./locales/es/translation.json";
+import deTranslation from "./locales/de/translation.json";
+import ruTranslation from "./locales/ru/translation.json";
+import czTranslation from "./locales/cz/translation.json";
+import frTranslation from "./locales/fr/translation.json";
+import itTranslation from "./locales/it/translation.json";
 import ICU from "i18next-icu";
 import LanguageDetector from "i18next-browser-languagedetector";
 
@@ -12,6 +17,21 @@ const resources = {
     },
     es: {
         translation: esTranslation
+    },
+    de: {
+        translation: deTranslation
+    },
+    ru: {
+        translation: ruTranslation
+    },
+    cz : {
+        translation: czTranslation
+    },
+    fr: {
+        translation: frTranslation
+    },
+    it: {
+        translation: itTranslation
     }
 };
 
