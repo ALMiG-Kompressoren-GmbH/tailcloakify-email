@@ -26,15 +26,10 @@ const paragraph = {
 };
 
 export const Template = ({ locale, t }: TemplateProps) => (
-    <EmailLayout
-        preview={
-            t('event-remove_totp.messagePreview')
-        }
-        locale={locale}
-    >
+    <EmailLayout preview={t('event-remove-totp.messagePreview')} locale={locale}>
         <Text style={paragraph}>
             <p>
-                {t('event-remove_totp.messageBody', { date: exp('event.date'), ipAddress: exp('event.ipAddress')} )}
+                {t('event-remove-totp.messageBody', { date: exp('event.date'), ipAddress: exp('event.ipAddress')} )}
             </p>
         </Text>
     </EmailLayout>
@@ -47,5 +42,5 @@ export const getTemplate: GetTemplate = async props => {
 
 export const getSubject: GetSubject = async _props => {
     const t = i18n.getFixedT(_props.locale);
-    return t('event-remove_totp.messageSubject');
+    return t('event-remove-totp.messageSubject');
 };
