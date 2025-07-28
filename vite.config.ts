@@ -60,7 +60,7 @@ export default defineConfig({
                     ),
                     themeNames: buildContext.themeNames,
                     keycloakifyBuildDirPath: buildContext.keycloakifyBuildDirPath,
-                    locales: ["en", "pl"],
+                    locales: ["en", "cz", "de", "es", "fr", "it","ru"],
                     cwd: __dirname,
                     esbuild: {}, // optional esbuild options
                 });

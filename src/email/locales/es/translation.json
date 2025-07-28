@@ -8,5 +8,10 @@
     "resetPassword": "Si el enlace ya ha expirado, intenta restablecer tu contraseña con tu correo electrónico en nuestra página de inicio de sesión.",
     "furtherActions": "Si tienes alguna pregunta o crees que has recibido este correo por error, por favor comunícate con {contactEmail} para obtener ayuda.",
     "invitation": "Bienvenido"
+  },
+  "email-test": {
+    "messageSubject": "[KEYCLOAK] - Correo electrónico de prueba SMTP",
+    "messagePreview": "Este es un correo electrónico de prueba",
+    "messageBody": "Este es un correo electrónico de prueba de {realmName}"
   }
 }
