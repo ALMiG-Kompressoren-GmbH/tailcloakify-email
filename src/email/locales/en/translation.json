@@ -61,6 +61,12 @@
     "linkExpiry": "This link will expire within {linkExpiration, plural, one {# minute} other {# minutes}}.",
     "ignoreMessage": "If you don't want to link account, just ignore this message. If you link accounts, you will be able to login to {realmName} through {identityProviderDisplayName}."
   },
+  "email-verification-with-code": {
+    "messageSubject": "Verification Code",
+    "messagePreview": "Here is your verification code",
+    "messageBody": "Please verify your email address by entering in the following code.",
+    "verificationCode": "{code}"
+  },
   "footer": {
     "year": "© {currentYear} {realmName}"
   }
