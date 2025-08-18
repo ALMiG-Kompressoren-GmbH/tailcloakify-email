@@ -4,43 +4,71 @@ type Path<T, K extends keyof T = keyof T> = K extends string // Ensure keys are 
     ? T[K] extends (...args: never[]) => never // Check if the property is a function
         ? `${K}()` | `${K}().${string}` // Append () and handle unknown return types
         : T[K] extends UnknownObject // Special handling for UnknownObject
-            ? `${K}.${string}` // Produce `parent.${string}` for UnknownObject
-            : T[K] extends object // If it's an object, recurse
-                ? `${K}` | `${K}.${Path<T[K]>}` // Combine current key with sub-paths
-                : `${K}` // For primitives or other types, just return the key
+          ? `${K}.${string}` // Produce `parent.${string}` for UnknownObject
+          : T[K] extends object // If it's an object, recurse
+            ? `${K}` | `${K}.${Path<T[K]>}` // Combine current key with sub-paths
+            : `${K}` // For primitives or other types, just return the key
     : never;
 
 interface BaseVars {
-  locale: string;
-  properties: UnknownObject;
-  realmName: string;
+    locale: string;
+    properties: UnknownObject;
+    realmName: string;
 }
 
 interface CodeVars {
-  code: string,
-  realmName: string;
+    code: string;
+    realmName: string;
 }
 
 type OtpEmail = {
-  emailId: "otp-email.ftl";
-  vars: Path<CodeVars & BaseVars>;
-}
+    emailId: "otp-email.ftl";
+    vars: Path<CodeVars & BaseVars>;
+};
 
-type KcEmailVars = OtpEmail;
+type EmailVerificationWithCode = {
+    emailId: "email-verification-with-code.ftl";
+    vars: Path<CodeVars>;
+};
+
+type KcEmailVars = OtpEmail | EmailVerificationWithCode;
 
 function variablesHelper<EmailId extends KcEmailVars["emailId"]>(_emailId: EmailId) {
-  return {
-  exp: (name: (Extract<OtpEmail, {
-    emailId: EmailId;
-  }>)["vars"]) => "${" + name + "}",
+    return {
+        exp: (
+            name: (
+                | Extract<
+                      OtpEmail,
+                      {
+                          emailId: EmailId;
+                      }
+                  >
+                | Extract<
+                      EmailVerificationWithCode,
+                      {
+                          emailId: EmailId;
+                      }
+                  >
+            )["vars"]
+        ) => "${" + name + "}",
 
-      v:(name: (Extract<OtpEmail, {
-    emailId: EmailId;
-  }>)["vars"]) => name,
-}
+        v: (
+            name: (
+                | Extract<
+                      OtpEmail,
+                      {
+                          emailId: EmailId;
+                      }
+                  >
+                | Extract<
+                      EmailVerificationWithCode,
+                      {
+                          emailId: EmailId;
+                      }
+                  >
+            )["vars"]
+        ) => name
+    };
 }
 
-export {
-  type OtpEmail,
-  variablesHelper,
-}
+export { type OtpEmail, type EmailVerificationWithCode, variablesHelper };

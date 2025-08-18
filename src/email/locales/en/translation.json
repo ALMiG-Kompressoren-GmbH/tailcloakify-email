@@ -80,6 +80,12 @@
     "verificationCode": "{code}",
     "ignoreMessage": "If this request was not made by you, please ignore this message."
   },
+  "email-verification-with-code": {
+    "messageSubject": "Email Verification",
+    "messagePreview": "Please verify your email address by entering in the following code",
+    "messageBody": "Please verify your email address by entering in the following code: ",
+    "verificationCode": "{code}"
+  },
   "footer": {
     "year": "© {currentYear} {realmName}"
   }
