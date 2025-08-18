@@ -42,6 +42,12 @@ export default defineConfig({
                 '<@addToXKeycloakifyMessagesIfMessageKey str="showSocialProvidersOnRegister" />',
             ].join(".\n"),
             startKeycloakOptions: {
+                dockerImage: "quay.io/phasetwo/phasetwo-keycloak:26.3.2",
+                keycloakExtraArgs: [
+                    "--spi-email-template-provider=freemarker-plus-mustache",
+                    "--spi-email-template-freemarker-plus-mustache-enabled=true",
+                    "--spi-theme-cache-themes=false"
+                ],
                 extensionJars: [
                     "https://repo1.maven.org/maven2/io/phasetwo/keycloak/keycloak-magic-link/0.34/keycloak-magic-link-0.34.jar"
                 ],
@@ -60,7 +66,7 @@ export default defineConfig({
                     ),
                     themeNames: buildContext.themeNames,
                     keycloakifyBuildDirPath: buildContext.keycloakifyBuildDirPath,
-                    locales: ["en", "cz", "de", "es", "fr", "it","ru"],
+                    locales: ["en", "cs", "de", "es", "fr", "it","ru"],
                     cwd: __dirname,
                     esbuild: {}, // optional esbuild options
                 });
