@@ -73,10 +73,10 @@
     "linkExpiry": "This link will expire within {linkExpiration, plural, one {# minute} other {# minutes}}.",
     "ignoreMessage": "If you don't want to link account, just ignore this message. If you link accounts, you will be able to login to {realmName} through {identityProviderDisplayName}."
   },
-  "email-verification-with-code": {
+  "otpEmail": {
     "messageSubject": "Your access code for {realmName}",
     "messagePreview": "Someone has requested access to your account",
-    "messageBody": "Someone has requested access to your account. Your One-Time Password (OTP) is",
+    "messageBody": "Someone has requested access to your account. Your One-Time Password (OTP) is: ",
     "verificationCode": "{code}",
     "ignoreMessage": "If this request was not made by you, please ignore this message."
   },
