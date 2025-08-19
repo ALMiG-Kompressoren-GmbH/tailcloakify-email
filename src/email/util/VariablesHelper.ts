@@ -1,4 +1,4 @@
-import { OrganizationModel, LinkVars, BaseVars } from "keycloakify-emails/variables";
+import { BaseVars, LinkVars, OrganizationModel } from "keycloakify-emails/variables";
 
 type UnknownObject = "object";
 
@@ -14,6 +14,13 @@ type Path<T, K extends keyof T = keyof T> = K extends string // Ensure keys are 
 
 interface CodeVars {
     code: string;
+}
+
+/**
+ * src/main/java/io/phasetwo/keycloak/magic/auth/model/MagicLinkContinuationBean.java
+ * */
+interface MagicLinkContinuationBean {
+    magicLink: string;
 }
 
 type OtpEmail = {
@@ -32,12 +39,28 @@ type EmailVerificationWithCode = {
  */
 type InvitationEmail = {
     emailId: "invitation-email.ftl";
-    vars: Path<BaseVars & LinkVars & {
-        organization: OrganizationModel,
-    }>;
+    vars: Path<
+        BaseVars &
+            LinkVars & {
+                organization: OrganizationModel;
+            }
+    >;
 };
 
-type KcEmailVars = OtpEmail | EmailVerificationWithCode | InvitationEmail;
+type MagicLinkEmail = {
+    emailId: "magic-link-email.ftl";
+    vars: Path<
+        BaseVars & {
+            url: MagicLinkContinuationBean;
+        }
+    >;
+};
+
+type KcEmailVars =
+    | OtpEmail
+    | EmailVerificationWithCode
+    | InvitationEmail
+    | MagicLinkEmail;
 
 function variablesHelper<EmailId extends KcEmailVars["emailId"]>(_emailId: EmailId) {
     return {
@@ -57,6 +80,12 @@ function variablesHelper<EmailId extends KcEmailVars["emailId"]>(_emailId: Email
                   >
                 | Extract<
                       InvitationEmail,
+                      {
+                          emailId: EmailId;
+                      }
+                  >
+                | Extract<
+                      MagicLinkEmail,
                       {
                           emailId: EmailId;
                       }
@@ -84,9 +113,20 @@ function variablesHelper<EmailId extends KcEmailVars["emailId"]>(_emailId: Email
                           emailId: EmailId;
                       }
                   >
+                | Extract<
+                      MagicLinkEmail,
+                      {
+                          emailId: EmailId;
+                      }
+                  >
             )["vars"]
         ) => name
     };
 }
 
-export { type OtpEmail, type EmailVerificationWithCode, type InvitationEmail, variablesHelper };
+export {
+    type OtpEmail,
+    type EmailVerificationWithCode,
+    type InvitationEmail,
+    variablesHelper
+};
