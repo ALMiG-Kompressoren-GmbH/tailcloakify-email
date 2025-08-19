@@ -1,7 +1,7 @@
 import { render, Text } from "jsx-email";
 import { EmailLayout } from "../layout";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
-import { variablesHelper } from "../util/2faVariableHelper";
+import { variablesHelper } from "../util/VariablesHelper.ts";
 import i18n, { TFunction } from "i18next";
 import { previewLocale } from "../util/previewLocale";
 
