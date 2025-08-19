@@ -128,5 +128,6 @@ export {
     type OtpEmail,
     type EmailVerificationWithCode,
     type InvitationEmail,
+    type MagicLinkEmail,
     variablesHelper
 };
