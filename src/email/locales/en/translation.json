@@ -92,6 +92,13 @@
     "messageBody": "{email} has been invited to join {orgName} at {realmName} by {inviterName}.",
     "furtherActions": "To accept or reject this invitation, click on the link below to log in."
   },
+  "magic-link-email": {
+    "messageSubject": "Login to {realmName} account",
+    "messagePreview": "Someone has requested a login link to {realmName}",
+    "messageBody": "Someone has requested a login link to {realmName}",
+    "magicLink": "Click to log in ",
+    "ignoreMessage": "If this request was not made by you, please ignore this email."
+  },
   "footer": {
     "year": "© {currentYear} {realmName}"
   }
