@@ -27,7 +27,7 @@ const paragraph = {
 
 export const Template = ({locale, t}: TemplateProps) => {
   return (
-      <EmailLayout preview={t("execute-actions.messagePreview")} locale={locale}>
+      <EmailLayout preview={t("execute-actions.messagePreview", { realmName: exp("realmName")} )} locale={locale}>
         <Text style={paragraph}>
           <Raw
               content="<#if (requiredActions![])?seq_contains('UPDATE_PASSWORD') && (requiredActions![])?seq_contains('UPDATE_PROFILE')>"/>

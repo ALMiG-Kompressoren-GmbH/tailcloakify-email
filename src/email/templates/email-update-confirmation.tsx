@@ -26,9 +26,8 @@ const paragraph = {
 
 export const Template = ({ locale, t }: TemplateProps) => (
     <EmailLayout
-        preview={t("email-update-confirmation.messageBody", {
+        preview={t("email-update-confirmation.messagePreview", {
             realmName: exp("realmName"),
-            newEmail: exp("newEmail")
         })}
         locale={locale}
     >

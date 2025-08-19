@@ -1,3 +1,5 @@
+import { OrganizationModel, LinkVars, BaseVars } from "keycloakify-emails/variables";
+
 type UnknownObject = "object";
 
 type Path<T, K extends keyof T = keyof T> = K extends string // Ensure keys are strings
@@ -10,15 +12,8 @@ type Path<T, K extends keyof T = keyof T> = K extends string // Ensure keys are 
             : `${K}` // For primitives or other types, just return the key
     : never;
 
-interface BaseVars {
-    locale: string;
-    properties: UnknownObject;
-    realmName: string;
-}
-
 interface CodeVars {
     code: string;
-    realmName: string;
 }
 
 type OtpEmail = {
@@ -31,7 +26,18 @@ type EmailVerificationWithCode = {
     vars: Path<CodeVars>;
 };
 
-type KcEmailVars = OtpEmail | EmailVerificationWithCode;
+/**
+ * src/main/java/io/phasetwo/service/model/OrganizationModel.java
+ * src/main/java/io/phasetwo/service/model/InvitationModel.java
+ */
+type InvitationEmail = {
+    emailId: "invitation-email.ftl";
+    vars: Path<BaseVars & LinkVars & {
+        organization: OrganizationModel,
+    }>;
+};
+
+type KcEmailVars = OtpEmail | EmailVerificationWithCode | InvitationEmail;
 
 function variablesHelper<EmailId extends KcEmailVars["emailId"]>(_emailId: EmailId) {
     return {
@@ -45,6 +51,12 @@ function variablesHelper<EmailId extends KcEmailVars["emailId"]>(_emailId: Email
                   >
                 | Extract<
                       EmailVerificationWithCode,
+                      {
+                          emailId: EmailId;
+                      }
+                  >
+                | Extract<
+                      InvitationEmail,
                       {
                           emailId: EmailId;
                       }
@@ -66,9 +78,15 @@ function variablesHelper<EmailId extends KcEmailVars["emailId"]>(_emailId: Email
                           emailId: EmailId;
                       }
                   >
+                | Extract<
+                      InvitationEmail,
+                      {
+                          emailId: EmailId;
+                      }
+                  >
             )["vars"]
         ) => name
     };
 }
 
-export { type OtpEmail, type EmailVerificationWithCode, variablesHelper };
+export { type OtpEmail, type EmailVerificationWithCode, type InvitationEmail, variablesHelper };

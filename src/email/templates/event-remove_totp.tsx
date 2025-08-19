@@ -26,7 +26,7 @@ const paragraph = {
 };
 
 export const Template = ({ locale, t }: TemplateProps) => (
-    <EmailLayout preview={t('event-remove-totp.messagePreview')} locale={locale}>
+    <EmailLayout preview={t('event-remove-totp.messagePreview', { realmName: exp("realmName")})} locale={locale}>
         <Text style={paragraph}>
             <p>
                 {t('event-remove-totp.messageBody', { date: exp('event.date'), ipAddress: exp('event.ipAddress')} )}

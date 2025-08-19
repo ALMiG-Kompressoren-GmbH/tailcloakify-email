@@ -26,7 +26,7 @@ const paragraph = {
 };
 
 export const Template = ({ locale, t }: TemplateProps) => (
-    <EmailLayout preview={t("event-login-error.messagePreview")} locale={locale}>
+    <EmailLayout preview={t("event-login-error.messagePreview", { realmName: exp("realmName")} )} locale={locale}>
         <Text style={paragraph}>
             <p>
                 {t("event-login-error.messageBody", {
