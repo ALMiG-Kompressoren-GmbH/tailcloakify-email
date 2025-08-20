@@ -39,7 +39,12 @@ export const Template = ({ locale, t }: TemplateProps) => (
                 <p>
                     <a href={exp("link")}>{t("identity-provider-link.messageLink")}</a>
                 </p>
-                <p>{t("identity-provider-link.linkExpiry", { linkExpiration: 5 })}</p>
+                <p>
+                    {t("identity-provider-link.linkExpiry", {
+                        linkExpiration: "${linkExpirationFormatter(linkExpiration)}",
+                        interpolation: { escapeValue: false }
+                    })}
+                </p>
                 <p>
                     {t("identity-provider-link.ignoreMessage", {
                         realmName: exp("realmName"),

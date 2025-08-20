@@ -25,13 +25,21 @@ const paragraph = {
 };
 
 export const Template = ({ locale, t }: TemplateProps) => (
-    <EmailLayout preview={t("email-verification.messagePreview")} locale={locale}>
+    <EmailLayout
+        preview={t("email-verification.messagePreview", { realmName: exp("realmName") })}
+        locale={locale}
+    >
         <Text style={paragraph}>
             <p>{t("email-verification.messageBody", { realmName: exp("realmName") })}</p>
             <p>
                 <a href={exp("link")}>{t("email-verification.messageLink")}</a>
             </p>
-            <p>{t("email-verification.linkExpiry", { linkExpiration: 3 })}</p>
+            <p>
+                {t("email-verification.linkExpiry", {
+                    linkExpiration: "${linkExpirationFormatter(linkExpiration)}",
+                    interpolation: { escapeValue: false }
+                })}
+            </p>
             <p>{t("email-verification.ignoreMessage")}</p>
         </Text>
     </EmailLayout>

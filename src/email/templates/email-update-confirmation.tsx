@@ -27,7 +27,7 @@ const paragraph = {
 export const Template = ({ locale, t }: TemplateProps) => (
     <EmailLayout
         preview={t("email-update-confirmation.messagePreview", {
-            realmName: exp("realmName"),
+            realmName: exp("realmName")
         })}
         locale={locale}
     >
@@ -41,7 +41,12 @@ export const Template = ({ locale, t }: TemplateProps) => (
             <p>
                 <a href={exp("link")}>{exp("link")}</a>
             </p>
-            <p>{t("email-update-confirmation.linkExpiry", {linkExpiration: 3})}</p>
+            <p>
+                {t("email-update-confirmation.linkExpiry", {
+                    linkExpiration: "${linkExpirationFormatter(linkExpiration)}",
+                    interpolation: { escapeValue: false }
+                })}
+            </p>
             <p>{t("email-update-confirmation.ignoreMessage")}</p>
         </Text>
         <Text style={paragraph}></Text>

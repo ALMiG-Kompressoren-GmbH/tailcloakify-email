@@ -34,7 +34,7 @@
     "messageSubject": "Email Verification Confirmation",
     "messagePreview": "Email update verification for {realmName} account",
     "messageBody": "To update your {realmName} account with email address {newEmail}, click the link below",
-    "linkExpiry": "This link will expire within {linkExpiration, plural, one {# minute} other {# minutes}}.",
+    "linkExpiry": "This link will expire within {linkExpiration}.",
     "ignoreMessage": "If you don't want to proceed with this modification, just ignore this message."
   },
   "email-verification": {
@@ -42,7 +42,7 @@
     "messagePreview": "Email verification for {realmName}",
     "messageBody": "Someone has created a {realmName} account with this email address. If this was you, click the link below to verify your email address.",
     "messageLink": "Link to email address verification.",
-    "linkExpiry": "This link will expire within {linkExpiration, plural, one {# minute} other {# minutes}}.",
+    "linkExpiry": "This link will expire within {linkExpiration}.",
     "ignoreMessage": "If you don't want to create this account, just ignore this message."
   },
   "event-login-error": {
@@ -70,7 +70,7 @@
     "messagePreview": "Someone wants to link your {realmName} account",
     "messageBody": "Someone wants to link your {realmName} account with {identityProviderDisplayName} account of user {username}. If this was you, click the link below to link accounts.",
     "messageLink": "Link to confirm account linking.",
-    "linkExpiry": "This link will expire within {linkExpiration, plural, one {# minute} other {# minutes}}.",
+    "linkExpiry": "This link will expire within {linkExpiration}.",
     "ignoreMessage": "If you don't want to link account, just ignore this message. If you link accounts, you will be able to login to {realmName} through {identityProviderDisplayName}."
   },
   "otpEmail": {
