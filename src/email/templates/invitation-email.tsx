@@ -28,7 +28,7 @@ export const Template = ({ locale, t }: TemplateProps) => (
     <EmailLayout
         preview={t("invitation-email.messagePreview", {
             email: exp("user.email"),
-            orgName: exp("organization")
+            orgName: exp("organization.displayName")
         })}
         locale={locale}
     >
@@ -36,14 +36,14 @@ export const Template = ({ locale, t }: TemplateProps) => (
             <p>
                 {t("invitation-email.messageBody", {
                     email: exp("user.email"),
-                    orgName: exp("organization"),
+                    orgName: exp("organization.displayName"),
                     realmName: exp("realmName"),
                     inviterName: exp("user.username")
                 })}
             </p>
             <p>{t("invitation-email.furtherActions")}</p>
             <p>
-                <a href={exp("organization")}>{exp("organization")}</a>
+                <a href={exp("organization.url")}>{exp("organization.url")}</a>
             </p>
         </Text>
     </EmailLayout>
