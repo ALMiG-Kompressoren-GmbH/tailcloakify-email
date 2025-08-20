@@ -16,13 +16,6 @@ interface CodeVars {
     code: string;
 }
 
-/**
- * src/main/java/io/phasetwo/keycloak/magic/auth/model/MagicLinkContinuationBean.java
- * */
-interface MagicLinkContinuationBean {
-    magicLink: string;
-}
-
 type OtpEmail = {
     emailId: "otp-email.ftl";
     vars: Path<CodeVars & BaseVars>;
@@ -50,9 +43,7 @@ type InvitationEmail = {
 type MagicLinkEmail = {
     emailId: "magic-link-email.ftl";
     vars: Path<
-        BaseVars & {
-            url: MagicLinkContinuationBean;
-        }
+        BaseVars & LinkVars
     >;
 };
 
