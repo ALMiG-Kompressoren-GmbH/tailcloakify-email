@@ -1,4 +1,4 @@
-import { BaseVars, LinkVars, OrganizationModel } from "keycloakify-emails/variables";
+import { BaseVars, LinkVars } from "keycloakify-emails/variables";
 
 type UnknownObject = "object";
 
@@ -16,6 +16,17 @@ interface CodeVars {
     code: string;
 }
 
+/*
+* src/main/java/io/phasetwo/service/model/OrganizationModel.java
+* */
+interface OrganizationModel {
+    name: string;
+    displayName: string;
+    domains: string;
+    url: string;
+}
+
+
 type OtpEmail = {
     emailId: "otp-email.ftl";
     vars: Path<CodeVars & BaseVars>;
@@ -27,7 +38,6 @@ type EmailVerificationWithCode = {
 };
 
 /**
- * src/main/java/io/phasetwo/service/model/OrganizationModel.java
  * src/main/java/io/phasetwo/service/model/InvitationModel.java
  */
 type InvitationEmail = {

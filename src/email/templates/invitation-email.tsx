@@ -1,7 +1,7 @@
 import { render, Text } from "jsx-email";
 import { GetSubject, GetTemplate, GetTemplateProps } from "keycloakify-emails";
 import { EmailLayout } from "../layout.tsx";
-import { variablesHelper } from "../util/VariablesHelper.ts";
+import { variablesHelper } from "../util/VariablesHelper";
 import i18n, { TFunction } from "i18next";
 import { previewLocale } from "../util/previewLocale.ts";
 
@@ -28,7 +28,7 @@ export const Template = ({ locale, t }: TemplateProps) => (
     <EmailLayout
         preview={t("invitation-email.messagePreview", {
             email: exp("user.email"),
-            orgName: exp("organization.name")
+            orgName: exp("organization")
         })}
         locale={locale}
     >
@@ -36,14 +36,14 @@ export const Template = ({ locale, t }: TemplateProps) => (
             <p>
                 {t("invitation-email.messageBody", {
                     email: exp("user.email"),
-                    orgName: exp("organization.name"),
+                    orgName: exp("organization"),
                     realmName: exp("realmName"),
                     inviterName: exp("user.username")
                 })}
             </p>
             <p>{t("invitation-email.furtherActions")}</p>
             <p>
-                <a href={exp("link")}>{exp("link")}</a>
+                <a href={exp("organization")}>{exp("organization")}</a>
             </p>
         </Text>
     </EmailLayout>
