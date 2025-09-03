@@ -86,11 +86,14 @@
     "messageBody": "Please verify your email address by entering in the following code: ",
     "verificationCode": "{code}"
   },
-  "invitation-email": {
-    "messageSubject": "Invitation",
-    "messagePreview": "{email} has been invited to join {orgName}",
-    "messageBody": "{email} has been invited to join {orgName} at {realmName} by {inviterName}.",
-    "furtherActions": "To accept or reject this invitation, click on the link below to log in."
+  "organization-invite": {
+    "messageSubject": "Invitation to join the {0} organization",
+    "messagePreview": "You were invited to join {0} organization",
+    "messageBodySalutation": "Hi {firstName} {lastName},",
+    "messageBody": "You were invited to join the {0} organization. Click the link below to join.",
+    "invitationLink": "Link to join the organization.",
+    "linkExpiration": "This link will expire within {linkExpiration}",
+    "ignoreMessage": "If you don't want to join the organization, just ignore this message."
   },
   "magic-link-email": {
     "messageSubject": "Login to {realmName} account",
