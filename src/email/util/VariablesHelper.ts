@@ -1,4 +1,4 @@
-import { BaseVars, LinkVars } from "keycloakify-emails/variables";
+import { BaseVars, LinkVars, OrganizationModel, ProfileBean } from "keycloakify-emails/variables";
 
 type UnknownObject = "object";
 
@@ -17,39 +17,37 @@ interface CodeVars {
 }
 
 /*
-* src/main/java/io/phasetwo/service/model/OrganizationModel.java
+* Phase Two
 * */
-interface OrganizationModel {
-    name: string;
-    displayName: string;
-    domains: string;
-    url: string;
-}
-
-
 type OtpEmail = {
     emailId: "otp-email.ftl";
     vars: Path<CodeVars & BaseVars>;
 };
 
+/**
+ * Phase Two
+ */
 type EmailVerificationWithCode = {
     emailId: "email-verification-with-code.ftl";
     vars: Path<CodeVars>;
 };
 
 /**
- * src/main/java/io/phasetwo/service/model/InvitationModel.java
+ * https://github.com/keycloak/keycloak/commit/97cd5f3b8dc3920532903b28c5043e517d90961b
  */
-type InvitationEmail = {
-    emailId: "invitation-email.ftl";
+type OrganizationInvite = {
+    emailId: "org-invite.ftl";
     vars: Path<
         BaseVars &
-            LinkVars & {
-                organization: OrganizationModel;
-            }
+            LinkVars & ProfileBean & {
+        organization: OrganizationModel
+    }
     >;
 };
 
+/*
+* Phase Two
+* */
 type MagicLinkEmail = {
     emailId: "magic-link-email.ftl";
     vars: Path<
@@ -60,7 +58,7 @@ type MagicLinkEmail = {
 type KcEmailVars =
     | OtpEmail
     | EmailVerificationWithCode
-    | InvitationEmail
+    | OrganizationInvite
     | MagicLinkEmail;
 
 function variablesHelper<EmailId extends KcEmailVars["emailId"]>(_emailId: EmailId) {
@@ -80,7 +78,7 @@ function variablesHelper<EmailId extends KcEmailVars["emailId"]>(_emailId: Email
                       }
                   >
                 | Extract<
-                      InvitationEmail,
+                      OrganizationInvite,
                       {
                           emailId: EmailId;
                       }
@@ -109,7 +107,7 @@ function variablesHelper<EmailId extends KcEmailVars["emailId"]>(_emailId: Email
                       }
                   >
                 | Extract<
-                      InvitationEmail,
+                      OrganizationInvite,
                       {
                           emailId: EmailId;
                       }
@@ -128,7 +126,7 @@ function variablesHelper<EmailId extends KcEmailVars["emailId"]>(_emailId: Email
 export {
     type OtpEmail,
     type EmailVerificationWithCode,
-    type InvitationEmail,
+    type OrganizationInvite,
     type MagicLinkEmail,
     variablesHelper
 };
