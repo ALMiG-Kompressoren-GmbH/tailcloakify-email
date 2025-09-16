@@ -5,6 +5,9 @@ import i18n from "./i18n";
 
 const { exp } = createVariablesHelper("email-test.ftl");
 const currentYear = new Date().getFullYear();
+const backgroundImage = BACKGROUND_EMAIL_IMAGE_URL;
+const emailLogo = EMAIL_LOGO;
+const emailLogoAlt = EMAIL_LOGO_ALT;
 
 export const EmailLayout = ({
     locale,
@@ -16,7 +19,7 @@ export const EmailLayout = ({
     return (
         <Html lang={locale}>
             <Head>
-                <title>{exp("realmName")} Notification</title>
+                <title> {t("header.title", { realmName: exp("realmName") })} </title>
             </Head>
             <Preview>{preview}</Preview>
             <Body
@@ -24,8 +27,7 @@ export const EmailLayout = ({
                     margin: 0,
                     padding: 0,
                     backgroundColor: "#ecf9ff",
-                    backgroundImage:
-                        "url('https://mailwind.blob.core.windows.net/website/blurred-background-transparency.jpg')",
+                    backgroundImage: `url('${backgroundImage}')`,
                     backgroundRepeat: "no-repeat",
                     backgroundSize: "cover",
                     fontFamily:
@@ -71,8 +73,8 @@ export const EmailLayout = ({
                                                     <td align="center">
                                                         {/* Logo */}
                                                         <img
-                                                            src="https://www.almig.de/typo3conf/ext/almig_package/Resources/Public/Images/almig-logo.png"
-                                                            alt="ALMiG Compressor Systems Logo"
+                                                            src={emailLogo}
+                                                            alt={emailLogoAlt}
                                                             style={{ height: "40px" }}
                                                         />
                                                     </td>

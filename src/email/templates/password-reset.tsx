@@ -19,29 +19,29 @@ export const templateName = "Password Reset";
 const { exp } = createVariablesHelper("password-reset.ftl");
 
 const paragraph = {
-    color: '#777',
+    color: "#777",
     fontSize: "16px",
     lineHeight: "24px",
-    textAlign: "left" as const,
-}
+    textAlign: "left" as const
+};
 
-export const Template = ({ locale }: TemplateProps) => (
-    <EmailLayout preview={`Someone just requested to change your ${exp("realmName")} account's credentials.`} locale = { locale }>
+export const Template = ({ locale, t }: TemplateProps) => (
+    <EmailLayout
+        preview={t("password-reset.messagePreview", { realmName: exp("realmName") })}
+        locale={locale}
+    >
         <Text style={paragraph}>
+            <p>{t("password-reset.messageBody", { realmName: exp("realmName") })}</p>
             <p>
-                Someone just requested to change your {exp("realmName")} account's credentials. If
-                this was you, click on the link below to reset them.
+                <a href={exp("link")}>{t("password-reset.passwordResetLink")}</a>
             </p>
             <p>
-                <a href={exp("link")}>Link to reset credentials</a>
+                {t("password-reset.linkExpiration", {
+                    linkExpiration: "${linkExpirationFormatter(linkExpiration)}",
+                    interpolation: { escapeValue: false }
+                })}
             </p>
-            <p>
-                This link will expire within {exp("linkExpirationFormatter(linkExpiration)")}.
-            </p>
-            <p>
-                If you don't want to reset your credentials, just ignore this message and nothing
-                will be changed.
-            </p>
+            <p>{t("password-reset.ignoreMessage")}</p>
         </Text>
     </EmailLayout>
 );
@@ -53,5 +53,5 @@ export const getTemplate: GetTemplate = async props => {
 
 export const getSubject: GetSubject = async _props => {
     const t = i18n.getFixedT(_props.locale);
-    return t("identity-provider-link.messageSubject");
+    return t("password-reset.messageSubject");
 };
