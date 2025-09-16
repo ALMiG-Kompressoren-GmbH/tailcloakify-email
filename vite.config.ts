@@ -68,7 +68,13 @@ export default defineConfig({
                     keycloakifyBuildDirPath: buildContext.keycloakifyBuildDirPath,
                     locales: ["en", "cs", "de", "es", "fr", "it","ru"],
                     cwd: __dirname,
-                    esbuild: {}, // optional esbuild options
+                    esbuild: {
+                        define: {
+                            BACKGROUND_EMAIL_IMAGE_URL: JSON.stringify(process.env.VITE_BACKGROUND_EMAIL_IMAGE_URL || "https://mailwind.blob.core.windows.net/website/blurred-background-transparency.jpg"),
+                            EMAIL_LOGO: JSON.stringify(process.env.VITE_EMAIL_LOGO || ""),
+                            EMAIL_LOGO_ALT: JSON.stringify(process.env.VITE_EMAIL_LOGO_ALT || "")
+                        }
+                    },
                 });
             },
         })
