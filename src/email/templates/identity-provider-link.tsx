@@ -63,5 +63,5 @@ export const getTemplate: GetTemplate = async props => {
 
 export const getSubject: GetSubject = async _props => {
     const t = i18n.getFixedT(_props.locale);
-    return t("event-login-error.messageSubject");
+    return t("identity-provider-link.messageSubject");
 };
