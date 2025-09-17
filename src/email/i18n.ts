@@ -63,6 +63,7 @@ export const getMessages: GetMessages = props => {
         "requiredAction.delete_credential": t('execute-actions.deleteCredential'),
         "requiredAction.recovery-authn-codes": t('execute-actions.recoveryAuthenticationCodes'),
         "requiredAction.update_user_locale": t('execute-actions.updateUserLocale'),
+        "requiredAction.invitation-required-action": t('execute-actions.invitation'),
 
         "requiredAction.DEFAULT": t('execute-actions.welcome'),
     }
