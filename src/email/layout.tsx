@@ -5,9 +5,8 @@ import i18n from "./i18n";
 
 const { exp } = createVariablesHelper("email-test.ftl");
 const currentYear = new Date().getFullYear();
-const backgroundImage = BACKGROUND_EMAIL_IMAGE_URL;
-const emailLogo = EMAIL_LOGO;
-const emailLogoAlt = EMAIL_LOGO_ALT;
+const backgroundImage = TAILCLOAKIFY_BACKGROUND_EMAIL_IMAGE_URL;
+const emailLogo = TAILCLOAKIFY_EMAIL_LOGO;
 
 export const EmailLayout = ({
     locale,
@@ -27,9 +26,13 @@ export const EmailLayout = ({
                     margin: 0,
                     padding: 0,
                     backgroundColor: "#ecf9ff",
-                    backgroundImage: `url('${backgroundImage}')`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "cover",
+                    ...(backgroundImage
+                        ? {
+                              backgroundImage: `url('${backgroundImage}')`,
+                              backgroundRepeat: "no-repeat",
+                              backgroundSize: "cover"
+                          }
+                        : {}),
                     fontFamily:
                         '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif'
                 }}
@@ -74,7 +77,7 @@ export const EmailLayout = ({
                                                         {/* Logo */}
                                                         <img
                                                             src={emailLogo}
-                                                            alt={emailLogoAlt}
+                                                            alt={exp("realmName")}
                                                             style={{ height: "40px" }}
                                                         />
                                                     </td>

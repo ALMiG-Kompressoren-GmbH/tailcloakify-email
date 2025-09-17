@@ -70,9 +70,9 @@ export default defineConfig({
                     cwd: __dirname,
                     esbuild: {
                         define: {
-                            BACKGROUND_EMAIL_IMAGE_URL: JSON.stringify(process.env.VITE_BACKGROUND_EMAIL_IMAGE_URL || ""),
-                            EMAIL_LOGO: JSON.stringify(process.env.VITE_EMAIL_LOGO || ""),
-                            EMAIL_LOGO_ALT: JSON.stringify(process.env.VITE_EMAIL_LOGO_ALT || "")
+                            TAILCLOAKIFY_BACKGROUND_EMAIL_IMAGE_URL: JSON.stringify(process.env.TAILCLOAKIFY_BACKGROUND_EMAIL_IMAGE_URL || ""),
+                            TAILCLOAKIFY_EMAIL_LOGO: JSON.stringify(process.env.TAILCLOAKIFY_EMAIL_LOGO || ""),
+                            TAILCLOAKIFY_EMAIL_LOGO_ALT: JSON.stringify(process.env.TAILCLOAKIFY_EMAIL_LOGO_ALT || "")
                         }
                     },
                 });
