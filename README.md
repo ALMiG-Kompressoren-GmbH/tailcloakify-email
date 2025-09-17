@@ -13,15 +13,16 @@ UI design approach.
 
 1. Place the provided JAR file in the <keycloak-home>/providers/ directory or use the example Dockerfile from this repository to add the provided JAR file into your Docker Image.
 2. Set environment variables or localization messages to customize the theme with the out of the box configuration functionalities.
-3. Restart your Keycloak server or deploy your builded docker image to your server.
+3. Restart your Keycloak server or deploy your built docker image to your server.
 4. Log in to the Keycloak Admin Console.  
 Go to Realm Settings > Themes.  
-Select the Tailcloakify login theme from the dropdown.  
+Select the `Tailcloakify` Login theme from the dropdown.  
+Select the `Tailcloakify` Email theme from the dropdown.   
 Save your settings.
 
-# Supported Pages
+# Supported Login Pages & Email Templates
 
-Tailcloakify aims to provide support for all default login pages, which are currently available. If you think, there is something missing let us know.
+Tailcloakify aims to provide support for all default login pages and email templates, which are currently available. If you think, there is something missing let us know.
 
 We also support using the following plugins:
 
@@ -31,7 +32,7 @@ We also support using the following plugins:
 
 ## Customizing the Theme
 
-Tailcloakify provides several ways of customizing your theme without the need to rebuild the theme while using the prebundled JAR file. You can eigher use environment variables, the keycloak localization system or deploy your custom theme extending Tailcloakify.
+Tailcloakify provides several ways of customizing your theme without the need to rebuild the theme while using the prebundled JAR file. You can either use environment variables, the keycloak localization system or deploy your custom theme extending Tailcloakify.
 
 ## Environment variables
 
@@ -50,6 +51,10 @@ Tailcloakify provides several ways of customizing your theme without the need to
 | TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT  | Use it to integrate Orestbida cookie consent plugin                          |
 | TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA  | Provide any falsy value to disable the cookie section for the google captcha                          |
 | TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER | Use it to show social identity providers on the registration page (set to "TRUE") |
+| VITE_BACKGROUND_EMAIL_IMAGE_URL             | Use it to add a default background image for your email templates            |
+| VITE_EMAIL_LOGO                             | Use it to add an image of your logo to your email templates                  |
+| VITE_EMAIL_LOGO_ALT                         | Use it to add alternative text to your logo in your email templates          |
+
 
 ## Keycloak localization feature
 
@@ -64,6 +69,12 @@ Some customizations are possible through Keycloak's Localization System, allowin
 | footerImprintUrl         | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_IMPRINT_URL          |
 | footerDataprotectionUrl  | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL   |
 | showSocialProvidersOnRegister | The localized enabled alternative to env: TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER |
+
+**_Note_**: Unlike the Login theme, the Email theme does not include a feature for adding localized variables. Therefore, the email environment variables in the above section
+denoted with the prefix `VITE_` can only be configured as arguments in a Dockerfile, or Docker Compose yml configuration. These runtime docker environment variables will override 
+the build time environment variables set in the `vite.config.ts` file under `esbuild` options. This means, you can either set these variables in your Docker configs or in the `vite.config.ts`
+file.
+
 
 ## Using a child Theme
 
