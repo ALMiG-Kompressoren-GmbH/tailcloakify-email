@@ -70,7 +70,7 @@ export default defineConfig({
                     cwd: __dirname,
                     esbuild: {
                         define: {
-                            BACKGROUND_EMAIL_IMAGE_URL: JSON.stringify(process.env.VITE_BACKGROUND_EMAIL_IMAGE_URL || "https://mailwind.blob.core.windows.net/website/blurred-background-transparency.jpg"),
+                            BACKGROUND_EMAIL_IMAGE_URL: JSON.stringify(process.env.VITE_BACKGROUND_EMAIL_IMAGE_URL || ""),
                             EMAIL_LOGO: JSON.stringify(process.env.VITE_EMAIL_LOGO || ""),
                             EMAIL_LOGO_ALT: JSON.stringify(process.env.VITE_EMAIL_LOGO_ALT || "")
                         }
