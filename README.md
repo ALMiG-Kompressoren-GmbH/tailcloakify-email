@@ -51,9 +51,8 @@ Tailcloakify provides several ways of customizing your theme without the need to
 | TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT  | Use it to integrate Orestbida cookie consent plugin                          |
 | TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA  | Provide any falsy value to disable the cookie section for the google captcha                          |
 | TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER | Use it to show social identity providers on the registration page (set to "TRUE") |
-| VITE_BACKGROUND_EMAIL_IMAGE_URL             | Use it to add a default background image for your email templates            |
-| VITE_EMAIL_LOGO                             | Use it to add an image of your logo to your email templates                  |
-| VITE_EMAIL_LOGO_ALT                         | Use it to add alternative text to your logo in your email templates          |
+| TAILCLOAKIFY_BACKGROUND_EMAIL_IMAGE_URL             | Use it to add a default background image for your email templates            |
+| TAILCLOAKIFY_EMAIL_LOGO                             | Use it to add an image of your logo to your email templates                  |
 
 
 ## Keycloak localization feature
@@ -71,7 +70,7 @@ Some customizations are possible through Keycloak's Localization System, allowin
 | showSocialProvidersOnRegister | The localized enabled alternative to env: TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER |
 
 **_Note_**: Unlike the Login theme, the Email theme does not include a feature for adding localized variables. Therefore, the email environment variables in the above section
-denoted with the prefix `VITE_` can only be configured as arguments in a Dockerfile, or Docker Compose yml configuration. These runtime docker environment variables will override 
+denoted with the prefix `_EMAIL_` can only be configured as arguments in a Dockerfile, or Docker Compose yml configuration. These runtime docker environment variables will override 
 the build time environment variables set in the `vite.config.ts` file under `esbuild` options. This means, you can either set these variables in your Docker configs or in the `vite.config.ts`
 file.
 
