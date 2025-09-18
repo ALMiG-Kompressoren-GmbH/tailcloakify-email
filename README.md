@@ -52,7 +52,7 @@ Tailcloakify provides several ways of customizing your theme without the need to
 | TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT                | Use it to integrate Orestbida cookie consent plugin                               |
 | TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA | Provide any falsy value to disable the cookie section for the google captcha      |
 | TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER            | Use it to show social identity providers on the registration page (set to "TRUE") |
-| TAILCLOAKIFY_BACKGROUND_EMAIL_IMAGE_URL                   | Use it to add a default background image for your email templates                 |
+| TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL                   | Use it to add a default background image for your email templates                 |
 | TAILCLOAKIFY_EMAIL_LOGO                                   | Use it to add an image of your logo to your email templates                       |
 | TAILCLOAKIFY_EMAIL_FONT_FAMILY                            | Use it to add your preferred font with good cross-platform compatibility          |
 
