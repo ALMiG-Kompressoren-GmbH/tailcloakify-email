@@ -5,7 +5,7 @@ import i18n from "./i18n";
 
 const { exp } = createVariablesHelper("email-test.ftl");
 const currentYear = new Date().getFullYear();
-const backgroundImage = TAILCLOAKIFY_BACKGROUND_EMAIL_IMAGE_URL;
+const backgroundImage = TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL;
 const emailLogo = TAILCLOAKIFY_EMAIL_LOGO;
 
 export const EmailLayout = ({
@@ -33,8 +33,6 @@ export const EmailLayout = ({
                               backgroundSize: "cover"
                           }
                         : {}),
-                    fontFamily:
-                        '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif'
                 }}
             >
                 <Tailwind>
