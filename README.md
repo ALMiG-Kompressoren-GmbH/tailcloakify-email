@@ -4,6 +4,7 @@
     <br/>
 </p>
 <img src="./public/Tailcloakify-login-page.png" alt="keycloak theme config" width="1905">
+<img src="./public/Tailcloakify-email-template.png" alt="keycloak theme config" width="1905">
 
 Tailcloakify is a [Keycloak](https://github.com/keycloak/keycloak) Theme that is based on 
 [Keycloakify](https://github.com/keycloakify/keycloakify), layered with [TailwindCSS](https://github.com/tailwindlabs/tailwindcss) and inspired by [Keywind](https://github.com/lukin/keywind) 
