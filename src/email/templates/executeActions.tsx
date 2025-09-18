@@ -51,7 +51,7 @@ export const Template = ({ locale, t }: TemplateProps) => {
                     {t("execute-actions.resetPassword")}
                     <br />
                     {t("execute-actions.furtherActions", {
-                        contactEmail: "compass@almig.de"
+                        contactEmail: exp("user.email")
                     })}
                 </p>
 
