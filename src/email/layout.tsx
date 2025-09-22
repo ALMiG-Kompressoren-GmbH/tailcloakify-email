@@ -110,9 +110,7 @@ export const EmailLayout = ({
                             align="center"
                             style={{
                                 width: "100%",
-                                marginTop: "0.5rem",
-                                marginBottom: "0.5rem",
-                                textAlign: "center",
+                                margin: "0.5rem",
                                 fontSize: "0.875rem",
                                 opacity: 0.8,
                                 color: "black"
@@ -120,7 +118,21 @@ export const EmailLayout = ({
                         >
                             <tbody>
                                 <tr>
-                                    <td style={{ color: "black" }}>
+                                    <td
+                                        style={{
+                                            textAlign: "left",
+                                            fontSize: "0.5rem",
+                                        }}
+                                    >
+                                        {t("footer.disclaimer", {
+                                            realmName: exp("realmName"),
+                                            email: exp("user.email")
+                                        })}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style={{ color: "black", textAlign: "center" }}>
+                                        <br />
                                         {t("footer.year", {
                                             currentYear,
                                             realmName: exp("realmName")

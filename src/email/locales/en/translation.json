@@ -73,6 +73,7 @@
     "adminIgnoreMessage": " If you are unaware that your administrator has requested this, just ignore this message and nothing will be changed."
   },
   "footer": {
+    "disclaimer": "Important Notice: We are sending you this email because you have an account at {realmName}. This email is sent as part of our notification service. If you don't want to receive our notification emails in future, please reach out to {email}.",
     "year": "© {currentYear} {realmName}"
   },
   "header": {
