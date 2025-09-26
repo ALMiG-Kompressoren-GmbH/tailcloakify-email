@@ -30,13 +30,13 @@ export const Template = ({ locale, t }: TemplateProps) => (
             realmName: exp("realmName")
         })}
         locale={locale}
+        disclaimer={t("magic-link-email.disclaimer")}
     >
         <Text style={paragraph}>
             <p>{t("magic-link-email.messageBody", { realmName: exp("realmName") })}</p>
             <p>
                 <a href={exp("url.loginUrl")}>{t("magic-link-email.magicLink")}</a>
             </p>
-            <p>{t("magic-link-email.ignoreMessage")}</p>
         </Text>
     </EmailLayout>
 );
