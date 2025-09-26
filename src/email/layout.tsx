@@ -8,12 +8,14 @@ const currentYear = new Date().getFullYear();
 const backgroundImage = TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL;
 const emailLogo = TAILCLOAKIFY_EMAIL_LOGO;
 const templateFont = TAILCLOAKIFY_EMAIL_FONT_FAMILY;
+const contactEmail = TAILCLOAKIFY_CONTACT_EMAIL;
 
 export const EmailLayout = ({
     locale,
     children,
-    preview
-}: PropsWithChildren<{ preview: ReactNode; locale: string }>) => {
+    preview,
+    disclaimer,
+}: PropsWithChildren<{ preview: ReactNode; locale: string, disclaimer: ReactNode }>) => {
     const t = i18n.getFixedT(locale);
 
     return (
@@ -95,6 +97,11 @@ export const EmailLayout = ({
                                                         {children}
                                                     </td>
                                                 </tr>
+                                                <tr>
+                                                    <td>
+                                                        {disclaimer}
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </td>
@@ -126,7 +133,7 @@ export const EmailLayout = ({
                                     >
                                         {t("footer.disclaimer", {
                                             realmName: exp("realmName"),
-                                            email: exp("user.email")
+                                            contactEmail: contactEmail
                                         })}
                                     </td>
                                 </tr>
