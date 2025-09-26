@@ -30,6 +30,7 @@ export const Template = ({ locale, t }: TemplateProps) => (
             realmName: exp("realmName")
         })}
         locale={locale}
+        disclaimer={t("email-update-confirmation.disclaimer")}
     >
         <Text style={paragraph}>
             <p>
@@ -47,7 +48,6 @@ export const Template = ({ locale, t }: TemplateProps) => (
                     interpolation: { escapeValue: false }
                 })}
             </p>
-            <p>{t("email-update-confirmation.ignoreMessage")}</p>
         </Text>
         <Text style={paragraph}></Text>
     </EmailLayout>

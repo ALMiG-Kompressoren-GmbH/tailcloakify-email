@@ -24,11 +24,18 @@ export const templateName = "Email Test";
 
 const { exp } = createVariablesHelper("email-test.ftl");
 
-export const Template = ({locale, t}: TemplateProps) => (
-    <EmailLayout preview = {t('email-test.messagePreview')} locale={locale}>
-        <Text style = { paragraph }> {t('email-test.messageBody', { realmName: exp("realmName") })}</Text>
+export const Template = ({ locale, t }: TemplateProps) => (
+    <EmailLayout
+        preview={t("email-test.messagePreview")}
+        locale={locale}
+        disclaimer={t("email-test.disclaimer")}
+    >
+        <Text style={paragraph}>
+            {" "}
+            {t("email-test.messageBody", { realmName: exp("realmName") })}
+        </Text>
     </EmailLayout>
-)
+);
 
 export const getTemplate: GetTemplate = async (props) => {
     const t = i18n.getFixedT(props.locale);

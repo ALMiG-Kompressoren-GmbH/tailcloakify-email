@@ -26,7 +26,14 @@ const paragraph = {
 };
 
 export const Template = ({ locale, t }: TemplateProps) => (
-    <EmailLayout preview={t("identity-provider-link.messagePreview")} locale={locale}>
+    <EmailLayout
+        preview={t("identity-provider-link.messagePreview")}
+        locale={locale}
+        disclaimer={t("identity-provider-link.disclaimer", {
+            realmName: exp("realmName"),
+            identityProviderDisplayName: exp("identityProviderDisplayName")
+        })}
+    >
         <Text style={paragraph}>
             <p>
                 <p>
@@ -43,12 +50,6 @@ export const Template = ({ locale, t }: TemplateProps) => (
                     {t("identity-provider-link.linkExpiry", {
                         linkExpiration: "${linkExpirationFormatter(linkExpiration)}",
                         interpolation: { escapeValue: false }
-                    })}
-                </p>
-                <p>
-                    {t("identity-provider-link.ignoreMessage", {
-                        realmName: exp("realmName"),
-                        identityProviderDisplayName: exp("identityProviderDisplayName")
                     })}
                 </p>
             </p>

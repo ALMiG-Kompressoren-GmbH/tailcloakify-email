@@ -17,7 +17,7 @@ export const previewProps: TemplateProps = {
 export const templateName = "Event Update Totp";
 
 const { exp } = createVariablesHelper("event-update_totp.ftl");
-
+const contactEmail = TAILCLOAKIFY_CONTACT_EMAIL;
 const paragraph = {
     color: "#777",
     fontSize: "16px",
@@ -26,7 +26,11 @@ const paragraph = {
 };
 
 export const Template = ({ locale, t }: TemplateProps) => (
-    <EmailLayout preview={t("event-update-totp.messagePreview", { realmName: exp("realmName")})} locale={locale}>
+    <EmailLayout
+        preview={t("event-update-totp.messagePreview", { realmName: exp("realmName") })}
+        locale={locale}
+        disclaimer={t("event-update-totp.disclaimer", { contactEmail: contactEmail })}
+    >
         <Text style={paragraph}>
             <p>
                 {t("event-update-totp.messageBody", {

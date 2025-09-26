@@ -30,6 +30,9 @@ export const Template = ({ locale, t }: TemplateProps) => (
             "0": exp("organization.name")
         })}
         locale={locale}
+        disclaimer={t("organization-invite.disclaimer", {
+            "0": exp("organization.name")
+        })}
     >
         <Text style={paragraph}>
             <Raw content="<#if firstName?? && lastName??>" />
@@ -53,7 +56,6 @@ export const Template = ({ locale, t }: TemplateProps) => (
                     interpolation: { escapeValue: false }
                 })}
             </p>
-            <p>{t("organization-invite.ignoreMessage")}</p>
             <Raw content="<#else>" />
             <p>
                 {t("organization-invite.messageBody", {
@@ -69,7 +71,6 @@ export const Template = ({ locale, t }: TemplateProps) => (
                     interpolation: { escapeValue: false }
                 })}
             </p>
-            <p>{t("organization-invite.ignoreMessage")}</p>
             <Raw content="</#if>" />
         </Text>
     </EmailLayout>

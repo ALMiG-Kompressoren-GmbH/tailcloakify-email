@@ -17,6 +17,7 @@ export const previewProps: TemplateProps = {
 export const templateName = "Execute Actions";
 
 const { exp } = createVariablesHelper("executeActions.ftl");
+const contactEmail = TAILCLOAKIFY_CONTACT_EMAIL;
 
 const paragraph = {
     color: "#777",
@@ -30,6 +31,7 @@ export const Template = ({ locale, t }: TemplateProps) => {
         <EmailLayout
             preview={t("execute-actions.messagePreview", { realmName: exp("realmName") })}
             locale={locale}
+            disclaimer={""}
         >
             <Text style={paragraph}>
                 <Raw content="<#if (requiredActions![])?seq_contains('UPDATE_PASSWORD') && (requiredActions![])?seq_contains('UPDATE_PROFILE')>" />
@@ -51,7 +53,7 @@ export const Template = ({ locale, t }: TemplateProps) => {
                     {t("execute-actions.resetPassword")}
                     <br />
                     {t("execute-actions.furtherActions", {
-                        contactEmail: exp("user.email")
+                        contactEmail: contactEmail
                     })}
                 </p>
 

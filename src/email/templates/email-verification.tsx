@@ -28,6 +28,7 @@ export const Template = ({ locale, t }: TemplateProps) => (
     <EmailLayout
         preview={t("email-verification.messagePreview", { realmName: exp("realmName") })}
         locale={locale}
+        disclaimer={t("email-verification.disclaimer")}
     >
         <Text style={paragraph}>
             <p>{t("email-verification.messageBody", { realmName: exp("realmName") })}</p>
@@ -40,7 +41,6 @@ export const Template = ({ locale, t }: TemplateProps) => (
                     interpolation: { escapeValue: false }
                 })}
             </p>
-            <p>{t("email-verification.ignoreMessage")}</p>
         </Text>
     </EmailLayout>
 );

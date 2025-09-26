@@ -17,7 +17,7 @@ export const previewProps: TemplateProps = {
 export const templateName = "Event Remove Totp";
 
 const { exp } = createVariablesHelper("event-remove_totp.ftl");
-
+const contactEmail = TAILCLOAKIFY_CONTACT_EMAIL;
 const paragraph = {
     color: "#777",
     fontSize: "16px",
@@ -26,10 +26,17 @@ const paragraph = {
 };
 
 export const Template = ({ locale, t }: TemplateProps) => (
-    <EmailLayout preview={t('event-remove-totp.messagePreview', { realmName: exp("realmName")})} locale={locale}>
+    <EmailLayout
+        preview={t("event-remove-totp.messagePreview", { realmName: exp("realmName") })}
+        locale={locale}
+        disclaimer={t("event-remove-totp.disclaimer", { contactEmail: contactEmail })}
+    >
         <Text style={paragraph}>
             <p>
-                {t('event-remove-totp.messageBody', { date: exp('event.date'), ipAddress: exp('event.ipAddress')} )}
+                {t("event-remove-totp.messageBody", {
+                    date: exp("event.date"),
+                    ipAddress: exp("event.ipAddress")
+                })}
             </p>
         </Text>
     </EmailLayout>
@@ -42,5 +49,5 @@ export const getTemplate: GetTemplate = async props => {
 
 export const getSubject: GetSubject = async _props => {
     const t = i18n.getFixedT(_props.locale);
-    return t('event-remove-totp.messageSubject');
+    return t("event-remove-totp.messageSubject");
 };

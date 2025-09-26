@@ -28,6 +28,7 @@ export const Template = ({ locale, t }: TemplateProps) => (
     <EmailLayout
         preview={t("email-verification-with-code.messagePreview")}
         locale={locale}
+        disclaimer={t("email-verification-with-code.disclaimer")}
     >
         <Text style={paragraph}>
             <p>
