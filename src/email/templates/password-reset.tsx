@@ -29,6 +29,7 @@ export const Template = ({ locale, t }: TemplateProps) => (
     <EmailLayout
         preview={t("password-reset.messagePreview", { realmName: exp("realmName") })}
         locale={locale}
+        disclaimer={t("password-reset.disclaimer")}
     >
         <Text style={paragraph}>
             <p>{t("password-reset.messageBody", { realmName: exp("realmName") })}</p>
@@ -41,7 +42,6 @@ export const Template = ({ locale, t }: TemplateProps) => (
                     interpolation: { escapeValue: false }
                 })}
             </p>
-            <p>{t("password-reset.ignoreMessage")}</p>
         </Text>
     </EmailLayout>
 );

@@ -30,6 +30,7 @@ export const Template = ({ locale, t }: TemplateProps) => (
             realmName: exp("realmName")
         })}
         locale={locale}
+        disclaimer={t("otpEmail.disclaimer")}
     >
         <Text style={paragraph}>
             <p>
@@ -40,7 +41,6 @@ export const Template = ({ locale, t }: TemplateProps) => (
                     })}
                 </b>
             </p>
-            <p>{t("otpEmail.ignoreMessage")}</p>
         </Text>
     </EmailLayout>
 );
