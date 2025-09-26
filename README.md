@@ -37,24 +37,25 @@ Tailcloakify provides several ways of customizing your theme without the need to
 
 ## Environment variables
 
-| Name                                                      | Description                                                                       |
-|-----------------------------------------------------------|-----------------------------------------------------------------------------------|
-| TAILCLOAKIFY_ADDITIONAL_SCRIPTS                           | Use it to add other external scripts                                              |
-| TAILCLOAKIFY_ADDITIONAL_STYLES                            | Use it to add other external styles                                               |
-| TAILCLOAKIFY_ADDITIONAL_META                              | Use it to add other meta tags                                                     |
-| TAILCLOAKIFY_HIDE_LOGIN_FORM                              | Use it to hide the default login form for using IDPs only                         |
-| TAILCLOAKIFY_BACKGROUND_LOGO_URL                          | Use it to add an image of your logo                                               |
-| TAILCLOAKIFY_HEADER_LOGO_URL                              | Use it to add an image of your logo to the header                                 |
-| TAILCLOAKIFY_BACKGROUND_VIDEO_URL                         | Use it to add a MP4 format background video on your register and login pages      |
-| TAILCLOAKIFY_FAVICON_URL                                  | Use it to add a url to your Favicon                                               |
-| TAILCLOAKIFY_FOOTER_IMPRINT_URL                           | Use it to add an Impressum                                                        |
-| TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL                    | Use it to add url to your data protection document                                |
-| TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT                | Use it to integrate Orestbida cookie consent plugin                               |
-| TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA | Provide any falsy value to disable the cookie section for the google captcha      |
-| TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER            | Use it to show social identity providers on the registration page (set to "TRUE") |
-| TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL                   | Use it to add a default background image for your email templates                 |
-| TAILCLOAKIFY_EMAIL_LOGO                                   | Use it to add an image of your logo to your email templates                       |
-| TAILCLOAKIFY_EMAIL_FONT_FAMILY                            | Use it to add your preferred font with good cross-platform compatibility          |
+| Name                                                      | Description                                                                                        |
+|-----------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| TAILCLOAKIFY_ADDITIONAL_SCRIPTS                           | Use it to add other external scripts                                                               |
+| TAILCLOAKIFY_ADDITIONAL_STYLES                            | Use it to add other external styles                                                                |
+| TAILCLOAKIFY_ADDITIONAL_META                              | Use it to add other meta tags                                                                      |
+| TAILCLOAKIFY_HIDE_LOGIN_FORM                              | Use it to hide the default login form for using IDPs only                                          |
+| TAILCLOAKIFY_BACKGROUND_LOGO_URL                          | Use it to add an image of your logo                                                                |
+| TAILCLOAKIFY_HEADER_LOGO_URL                              | Use it to add an image of your logo to the header                                                  |
+| TAILCLOAKIFY_BACKGROUND_VIDEO_URL                         | Use it to add a MP4 format background video on your register and login pages                       |
+| TAILCLOAKIFY_FAVICON_URL                                  | Use it to add a url to your Favicon                                                                |
+| TAILCLOAKIFY_FOOTER_IMPRINT_URL                           | Use it to add an Impressum                                                                         |
+| TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL                    | Use it to add url to your data protection document                                                 |
+| TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT                | Use it to integrate Orestbida cookie consent plugin                                                |
+| TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA | Provide any falsy value to disable the cookie section for the google captcha                       |
+| TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER            | Use it to show social identity providers on the registration page (set to "TRUE")                  |
+| TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL                   | Use it to add a default background image for your email templates                                  |
+| TAILCLOAKIFY_EMAIL_LOGO                                   | Use it to add an image of your logo to your email templates                                        |
+| TAILCLOAKIFY_EMAIL_FONT_FAMILY                            | Use it to add your preferred font with good cross-platform compatibility                           |
+| TAILCLOAKIFY_CONTACT_EMAIL                                | Use it to add your contact email address. Preferably the email address used to contact your users. |
 
 
 ## Keycloak localization feature
