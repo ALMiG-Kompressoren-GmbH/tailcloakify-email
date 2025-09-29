@@ -9,7 +9,6 @@ import czTranslation from "./locales/cs/translation.json";
 import frTranslation from "./locales/fr/translation.json";
 import itTranslation from "./locales/it/translation.json";
 import ICU from "i18next-icu";
-import LanguageDetector from "i18next-browser-languagedetector";
 
 const resources = {
     en: {
@@ -38,7 +37,6 @@ const resources = {
 if (!i18n.isInitialized) {
     i18n.use(ICU)
     .use(initReactI18next)
-    .use(LanguageDetector)
     .init({
         resources,
         fallbackLng: "en",
