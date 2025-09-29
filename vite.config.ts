@@ -73,7 +73,7 @@ export default defineConfig({
                             TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL: JSON.stringify(process.env.TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL || ""),
                             TAILCLOAKIFY_EMAIL_LOGO: JSON.stringify(process.env.TAILCLOAKIFY_EMAIL_LOGO || ""),
                             TAILCLOAKIFY_EMAIL_FONT_FAMILY: JSON.stringify(process.env.TAILCLOAKIFY_EMAIL_FONT_FAMILY || ""),
-                            TAILCLOAKIFY_CONTACT_EMAIL: JSON.stringify(process.env.TAILCLOAKIFY_CONTACT_EMAIL || ""),
+                            TAILCLOAKIFY_EMAIL_CONTACT: JSON.stringify(process.env.TAILCLOAKIFY_EMAIL_CONTACT || ""),
                         }
                     },
                 });

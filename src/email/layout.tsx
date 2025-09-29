@@ -8,7 +8,7 @@ const currentYear = new Date().getFullYear();
 const backgroundImage = TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL;
 const emailLogo = TAILCLOAKIFY_EMAIL_LOGO;
 const templateFont = TAILCLOAKIFY_EMAIL_FONT_FAMILY;
-const contactEmail = TAILCLOAKIFY_CONTACT_EMAIL;
+const contactEmail = TAILCLOAKIFY_EMAIL_CONTACT;
 
 export const EmailLayout = ({
     locale,

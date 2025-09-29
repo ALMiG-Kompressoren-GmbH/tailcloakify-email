@@ -17,7 +17,7 @@ export const previewProps: TemplateProps = {
 export const templateName = "Event Login Error";
 
 const { exp } = createVariablesHelper("event-login_error.ftl");
-const contactEmail = TAILCLOAKIFY_CONTACT_EMAIL;
+const contactEmail = TAILCLOAKIFY_EMAIL_CONTACT;
 const paragraph = {
     color: "#777",
     fontSize: "16px",
