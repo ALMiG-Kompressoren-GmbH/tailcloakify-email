@@ -55,7 +55,7 @@ Tailcloakify provides several ways of customizing your theme without the need to
 | TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL                   | Use it to add a default background image for your email templates                                  |
 | TAILCLOAKIFY_EMAIL_LOGO                                   | Use it to add an image of your logo to your email templates                                        |
 | TAILCLOAKIFY_EMAIL_FONT_FAMILY                            | Use it to add your preferred font with good cross-platform compatibility                           |
-| TAILCLOAKIFY_CONTACT_EMAIL                                | Use it to add your contact email address. Preferably the email address used to contact your users. |
+| TAILCLOAKIFY_EMAIL_CONTACT                                | Use it to add your contact email address. Preferably the email address used to contact your users. |
 
 
 ## Keycloak localization feature
@@ -72,8 +72,8 @@ Some customizations are possible through Keycloak's Localization System, allowin
 | footerDataprotectionUrl  | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL   |
 | showSocialProvidersOnRegister | The localized enabled alternative to env: TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER |
 
-**_Note_**: Unlike the Login theme, the Email theme does not include a feature for adding localized variables. Therefore, the email environment variables in the above section
-denoted with the prefix `_EMAIL_` can only be configured as arguments in a Dockerfile, or Docker Compose yml configuration. These runtime docker environment variables will override 
+**_Note_**: Unlike the Login theme, the Email theme does not include a feature for adding localized variables directly from the Keycloak admin console. Therefore, the email environment variables in the above section
+denoted with the prefix `TAILCLOAKIFY_EMAIL_` can only be configured as arguments in a Dockerfile, or Docker Compose yml configuration. These runtime docker environment variables will override 
 the build time environment variables set in the `vite.config.ts` file under `esbuild` options. This means, you can either set these variables in your Docker configs or in the `vite.config.ts`
 file.
 
