@@ -17,7 +17,7 @@ export const previewProps: TemplateProps = {
 export const templateName = "Event Remove Totp";
 
 const { exp } = createVariablesHelper("event-remove_totp.ftl");
-const contactEmail = TAILCLOAKIFY_EMAIL_CONTACT;
+const contactEmail = exp("properties.TAILCLOAKIFY_EMAIL_CONTACT");
 const paragraph = {
     color: "#777",
     fontSize: "16px",

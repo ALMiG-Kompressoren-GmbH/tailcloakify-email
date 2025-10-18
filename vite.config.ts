@@ -4,6 +4,7 @@ import { keycloakify } from "keycloakify/vite-plugin";
 import { buildEmailTheme } from "keycloakify-emails"
 import path, { dirname } from "node:path";
 import { fileURLToPath } from "url";
+import { config } from "typescript-eslint";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 
@@ -31,6 +32,10 @@ export default defineConfig({
                 { name: "TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT", default: "" },
                 { name: "TAILCLOAKIFY_FOOTER_ORESTBIDACOOKIECONSENT_GOOGLE_CAPTCHA", default: "TRUE" },
                 { name: "TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER", default: "" },
+                { name: "TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL", default: "" },
+                { name: "TAILCLOAKIFY_EMAIL_LOGO", default: "" },
+                { name: "TAILCLOAKIFY_EMAIL_FONT_FAMILY", default: "" },
+                { name: "TAILCLOAKIFY_EMAIL_CONTACT", default: "" },
             ],
             kcContextExclusionsFtl: [
                 '<@addToXKeycloakifyMessagesIfMessageKey str="backgroundLogoUrl" />',
@@ -68,14 +73,8 @@ export default defineConfig({
                     keycloakifyBuildDirPath: buildContext.keycloakifyBuildDirPath,
                     locales: ["en", "cs", "de", "es", "fr", "it","ru"],
                     cwd: __dirname,
-                    esbuild: {
-                        define: {
-                            TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL: JSON.stringify(process.env.TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL || ""),
-                            TAILCLOAKIFY_EMAIL_LOGO: JSON.stringify(process.env.TAILCLOAKIFY_EMAIL_LOGO || ""),
-                            TAILCLOAKIFY_EMAIL_FONT_FAMILY: JSON.stringify(process.env.TAILCLOAKIFY_EMAIL_FONT_FAMILY || ""),
-                            TAILCLOAKIFY_EMAIL_CONTACT: JSON.stringify(process.env.TAILCLOAKIFY_EMAIL_CONTACT || ""),
-                        }
-                    },
+                    environmentVariables: buildContext.environmentVariables,
+                    esbuild: {},
                 });
             },
         })

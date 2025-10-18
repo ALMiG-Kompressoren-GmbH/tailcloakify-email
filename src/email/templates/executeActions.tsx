@@ -17,7 +17,7 @@ export const previewProps: TemplateProps = {
 export const templateName = "Execute Actions";
 
 const { exp } = createVariablesHelper("executeActions.ftl");
-const contactEmail = TAILCLOAKIFY_EMAIL_CONTACT;
+const contactEmail = exp("properties.TAILCLOAKIFY_EMAIL_CONTACT");
 
 const paragraph = {
     color: "#777",

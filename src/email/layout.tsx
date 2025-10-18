@@ -5,17 +5,17 @@ import i18n from "./i18n";
 
 const { exp } = createVariablesHelper("email-test.ftl");
 const currentYear = new Date().getFullYear();
-const backgroundImage = TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL;
-const emailLogo = TAILCLOAKIFY_EMAIL_LOGO;
-const templateFont = TAILCLOAKIFY_EMAIL_FONT_FAMILY;
-const contactEmail = TAILCLOAKIFY_EMAIL_CONTACT;
+const backgroundImage = exp("properties.TAILCLOAKIFY_EMAIL_BACKGROUND_IMAGE_URL");
+const emailLogo = exp("properties.TAILCLOAKIFY_EMAIL_LOGO");
+const templateFont = exp("properties.TAILCLOAKIFY_EMAIL_FONT_FAMILY");
+const contactEmail = exp("properties.TAILCLOAKIFY_EMAIL_CONTACT");
 
 export const EmailLayout = ({
     locale,
     children,
     preview,
-    disclaimer,
-}: PropsWithChildren<{ preview: ReactNode; locale: string, disclaimer: ReactNode }>) => {
+    disclaimer
+}: PropsWithChildren<{ preview: ReactNode; locale: string; disclaimer: ReactNode }>) => {
     const t = i18n.getFixedT(locale);
 
     return (
@@ -29,6 +29,8 @@ export const EmailLayout = ({
                     margin: 0,
                     padding: 0,
                     backgroundColor: "#ecf9ff",
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
                     ...(backgroundImage
                         ? {
                               backgroundImage: `url('${backgroundImage}')`,
@@ -37,7 +39,7 @@ export const EmailLayout = ({
                           }
                         : {}),
                     fontFamily: templateFont
-                        ? templateFont
+                        ? `'${templateFont}'`
                         : '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif'
                 }}
             >
@@ -98,9 +100,7 @@ export const EmailLayout = ({
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>
-                                                        {disclaimer}
-                                                    </td>
+                                                    <td>{disclaimer}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -128,7 +128,7 @@ export const EmailLayout = ({
                                     <td
                                         style={{
                                             textAlign: "left",
-                                            fontSize: "0.5rem",
+                                            fontSize: "0.5rem"
                                         }}
                                     >
                                         {t("footer.disclaimer", {
