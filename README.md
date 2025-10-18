@@ -73,9 +73,7 @@ Some customizations are possible through Keycloak's Localization System, allowin
 | showSocialProvidersOnRegister | The localized enabled alternative to env: TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER |
 
 **_Note_**: Unlike the Login theme, the Email theme does not include a feature for adding localized variables directly from the Keycloak admin console. Therefore, the email environment variables in the above section
-denoted with the prefix `TAILCLOAKIFY_EMAIL_` can only be configured as arguments in a Dockerfile, or Docker Compose yml configuration. These runtime docker environment variables will override 
-the build time environment variables set in the `vite.config.ts` file under `esbuild` options. This means, you can either set these variables in your Docker configs or in the `vite.config.ts`
-file.
+denoted with the prefix `TAILCLOAKIFY_EMAIL_` can only be configured as arguments in a Dockerfile, or Docker Compose yml configuration. 
 
 
 ## Using a child Theme
