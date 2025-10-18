@@ -4,7 +4,6 @@ import { keycloakify } from "keycloakify/vite-plugin";
 import { buildEmailTheme } from "keycloakify-emails"
 import path, { dirname } from "node:path";
 import { fileURLToPath } from "url";
-import { config } from "typescript-eslint";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 
