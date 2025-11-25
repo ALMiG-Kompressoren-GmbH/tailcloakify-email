@@ -62,14 +62,14 @@ Tailcloakify provides several ways of customizing your theme without the need to
 
 Some customizations are possible through Keycloak's Localization System, allowing setting up different configurations for each language. You can either add custom localization by adding those into the keycloak server or by manually setting them within the realm settings. You can also use this feature to overwrite default variables for each realm by providing at least the default language as configuration.
 
-| Name                     | Description                                                                        |
-| ------------------------ | ---------------------------------------------------------------------------------- |
-| backgroundLogoUrl        | The localized enabled alternative to env: TAILCLOAKIFY_BACKGROUND_LOGO_URL         |
-| headerLogoUrl            | The localized enabled alternative to env: TAILCLOAKIFY_HEADER_LOGO_URL             |
-| backgroundVideoUrl       | The localized enabled alternative to env: TAILCLOAKIFY_BACKGROUND_VIDEO_URL        |
-| faviconUrl               | The localized enabled alternative to env: TAILCLOAKIFY_FAVICON_URL                 |
-| footerImprintUrl         | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_IMPRINT_URL          |
-| footerDataprotectionUrl  | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL   |
+| Name                          | Description                                                                              |
+| ----------------------------- | ---------------------------------------------------------------------------------------- |
+| backgroundLogoUrl             | The localized enabled alternative to env: TAILCLOAKIFY_BACKGROUND_LOGO_URL               |
+| backgroundImageUrl            | The localized enabled alternative to env: TAILCLOAKIFY_BACKGROUND_IMAGE_URL              |
+| backgroundVideoUrl            | The localized enabled alternative to env: TAILCLOAKIFY_BACKGROUND_VIDEO_URL              |
+| faviconUrl                    | The localized enabled alternative to env: TAILCLOAKIFY_FAVICON_URL                       |
+| footerImprintUrl              | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_IMPRINT_URL                |
+| footerDataprotectionUrl       | The localized enabled alternative to env: TAILCLOAKIFY_FOOTER_DATAPROTECTION_URL         |
 | showSocialProvidersOnRegister | The localized enabled alternative to env: TAILCLOAKIFY_SHOW_SOCIAL_PROVIDERS_ON_REGISTER |
 
 **_Note_**: Unlike the Login theme, the Email theme does not include a feature for adding localized variables directly from the Keycloak admin console. Therefore, the email environment variables in the above section
@@ -147,7 +147,7 @@ You can customize this behavior, see documentation [here](https://docs.keycloaki
 ## GitHub Actions
 
 Tailcloakify comes with a generic GitHub Actions workflow that builds the theme and publishes
-the jars [as GitHub releases artifacts](https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases/tag/v1.1.17).
+the jars [as GitHub releases artifacts](https://github.com/ALMiG-Kompressoren-GmbH/tailcloakify/releases/tag/v1.1.18).
 To release a new version **just update the `package.json` version and push**.
 
 To enable the workflow go to your fork of this repository on GitHub then navigate to:
