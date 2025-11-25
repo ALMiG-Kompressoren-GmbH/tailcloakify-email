@@ -121,6 +121,13 @@ Or you can preview the pages using the storybook:
   npm run storybook
 ```
 
+To preview the email templates locally:
+```bash
+  email preview ./src/email/templates
+  ```
+
+Note: _We have used [JSX Email](https://jsx.email/docs/core/cli) to develop the email template._
+
 ## Building the theme
 
 You need to have [Maven](https://maven.apache.org/) installed to build the theme (Maven >= 3.1.1, Java >= 7).  
