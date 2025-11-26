@@ -25,9 +25,9 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
 
     const providerLogos = useProviderLogos();
 
-    const authButtonId = "authenticateWebAuthnButton";
+    const webAuthnButtonId = "authenticateWebAuthnButton";
 
-    useScript({ authButtonId, kcContext, i18n });
+    useScript({ webAuthnButtonId, kcContext, i18n });
 
     return (
         <Template
@@ -224,7 +224,7 @@ export default function LoginUsername(props: PageProps<Extract<KcContext, { page
                     )}
 
                     <input
-                        id={authButtonId}
+                        id={webAuthnButtonId}
                         type="button"
                         className={ "rounded-md text-primary-600 border-2 border-primary-600 border-solid px-4 py-2 text-sm flex justify-center relative w-full mt-4 no-underline hover:no-underline hover:border-3 hover:text-primary-300"}
                         value={msgStr("passkey-doAuthenticate")}
