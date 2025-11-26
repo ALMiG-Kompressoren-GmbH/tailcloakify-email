@@ -28,4 +28,3 @@ ENV TAILCLOAKIFY_EMAIL_FONT_FAMILY: ""
 ENV TAILCLOAKIFY_EMAIL_CONTACT: ""
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start"]
-
